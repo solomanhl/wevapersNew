@@ -22,7 +22,12 @@ define(function(require){
 		this.showMsgSys = justep.Bind.observable(true);
 		this.showMsgCom = justep.Bind.observable(false);
 		this.showMsgAtMe = justep.Bind.observable(false);
-		
+		this.pageNo_msg_sys = 1;
+		this.pageCount_msg_sys = 1;
+		this.pageNo_msg_com = 1;
+		this.pageCount_msg_com = 1;
+		this.pageNo_msg_atme = 1;
+		this.pageCount_msg_atme = 1;
 		
 	};
 	
@@ -167,6 +172,7 @@ define(function(require){
 		
 		
 	};
+	
 	Model.prototype.loginNow = function(event){
 		var url = require.toUrl('./loginActivity.w');
 //		window.open(url);
@@ -296,6 +302,163 @@ define(function(require){
 	};
 	
 	
+	//获取系统消息
+	Model.prototype.getMsg_sys = function(isApend){
+	var me = this;
+		var data = this.comp("notify_sys");
+		
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/HomeNotificationListServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"pageNo" : me.pageNo_msg_sys,
+	        	"uid" : me.uid,
+	        	"type" : "system"
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.result);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+	        	var pageCountObj, notificationsObj, pageNoObj;	
+	        	notificationsObj = resultData.notifications;
+	        	pageNoObj = resultData.pageNo;
+	        	pageCountObj = resultData.pageCount;
+	        	
+	        	me.pageNo_msg_sys = pageNoObj;
+	        	me.pageCount_msg_sys = pageCountObj;
+//	        	alert(me.totalPage_study);
+//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+	        	if (pageNoObj > 0){
+		        	json={"@type" : "table","notify_sys" : {"idColumnName" : "id","idColumnType" : "Integer", },"rows" :notificationsObj };
+		        	data.loadData(json, isApend);
+		        	
+//		        	alert(data.count());
+	        	}
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
+	};
+	
+	//获取交流消息
+	Model.prototype.getMsg_com = function(isApend){
+	var me = this;
+		var data = this.comp("notify_com");
+		
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/HomeNotificationListServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"pageNo" : me.pageNo_msg_com,
+	        	"uid" : me.uid,
+	        	"type" : "post"
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.result);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+	        	var pageCountObj, notificationsObj, pageNoObj;	
+	        	notificationsObj = resultData.notifications;
+	        	pageNoObj = resultData.pageNo;
+	        	pageCountObj = resultData.pageCount;
+	        	
+	        	me.pageNo_msg_com = pageNoObj;
+	        	me.pageCount_msg_com = pageCountObj;
+//	        	alert(me.totalPage_study);
+//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+	        	if (pageNoObj > 0){
+		        	json={"@type" : "table","notify_com" : {"idColumnName" : "id","idColumnType" : "Integer", },"rows" :notificationsObj };
+		        	data.loadData(json, isApend);
+		        	
+//		        	alert(data.count());
+	        	}
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
+	};
+	
+	//获取atme消息
+	Model.prototype.getMsg_atme = function(isApend){
+	var me = this;
+		var data = this.comp("notify_atme");
+		
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/HomeNotificationListServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"pageNo" : me.pageNo_msg_atme,
+	        	"uid" : 86,
+	        	"type" : "follower"
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.result);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+	        	var pageCountObj, notificationsObj, pageNoObj;	
+	        	notificationsObj = resultData.notifications;
+	        	pageNoObj = resultData.pageNo;
+	        	pageCountObj = resultData.pageCount;
+	        	
+	        	me.pageNo_msg_atme = pageNoObj;
+	        	me.pageCount_msg_atme = pageCountObj;
+//	        	alert(me.totalPage_study);
+//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+	        	if (pageNoObj > 0){
+		        	json={"@type" : "table","notify_atme" : {"idColumnName" : "id","idColumnType" : "Integer", },"rows" :notificationsObj };
+		        	data.loadData(json, isApend);
+		        	
+//		        	alert(data.count());
+	        	}
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
+	};
+	
+	//消息页
+	Model.prototype.content_msgActive = function(event){
+		this.getMsg_sys(false);
+		this.getMsg_com(false);
+		this.getMsg_atme(false);
+	};
+	
 	//点击消息-系统
 	Model.prototype.button_msg_sysClick = function(event){
 		this.showMsgSys.set(true);
@@ -336,7 +499,39 @@ define(function(require){
 	   justep.Shell.showPage(url);
 	};
 	
-
+	//消息页下拉
+	Model.prototype.scrollView_msgPullDown = function(event){
+		if (this.show_msg_sys()){
+			this.pageNo_msg_sys = 1 ;
+			this.pageCount_msg_sys = 1;
+			this.getMsg_sys(false);	
+		}else if (this.show_msg_com()){
+			this.pageNo_msg_com = 1 ;
+			this.pageCount_msg_com = 1;
+			this.getMsg_com(false);	
+		}else if (this.show_msg_atme()){
+			this.pageNo_msg_atme = 1 ;
+			this.pageCount_msg_atme = 1;
+			this.getMsg_atme(false);	
+		}
+	};
+	
+	//消息页上拉
+	Model.prototype.scrollView_msgPullUp = function(event){
+		if (this.show_msg_sys()){
+			if ( this.pageNo_msg_sys < this.pageCount_msg_sys){
+				this.getMsg_sys(true);	
+			}
+		}else if (this.show_msg_com()){
+			if ( this.pageNo_msg_com < this.pageCount_msg_com){
+				this.getMsg_com(true);	
+			}
+		}else if (this.show_msg_atme()){
+			if ( this.pageNo_msg_atme < this.pageCount_msg_atme){
+				this.getMsg_atme(true);	
+			}
+		}
+	};
 	
 	
 	return Model;

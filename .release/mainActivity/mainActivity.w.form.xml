@@ -6,7 +6,7 @@
   <div component="$model/UI2/system/components/justep/model/model" xid="model" style="display:none" data-bind="component:{name:'$model/UI2/system/components/justep/model/model'}" data-events="onLoad:modelLoad" __cid="cUBbQny" class="cUBbQny"> 
     <div component="$model/UI2/system/components/justep/shell/shell" xid="shell1" style="display:none" data-bind="component:{name:'$model/UI2/system/components/justep/shell/shell'}" __cid="cUBbQny" class="cUBbQny"/> 
   </div>  
-  <div component="$model/UI2/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar header p0edc18ff121b43fea41876ec49508b56-iosstatusbar cUBbQny" xid="panel1" data-bind="component:{name:'$model/UI2/system/components/justep/panel/panel'}" __cid="cUBbQny"> 
+  <div component="$model/UI2/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar header p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar cUBbQny" xid="panel1" data-bind="component:{name:'$model/UI2/system/components/justep/panel/panel'}" __cid="cUBbQny"> 
     <div class="x-panel-top top1 cUBbQny" xid="top1" component="$model/UI2/system/components/justep/panel/child" data-bind="component:{name:'$model/UI2/system/components/justep/panel/child'}" __cid="cUBbQny"> 
       <div component="$model/UI2/system/components/justep/titleBar/titleBar" class="x-titlebar cUBbQny" xid="titleBar1" style="background-color:#21b589;" data-bind="component:{name:'$model/UI2/system/components/justep/titleBar/titleBar'}" data-config="{&quot;title&quot;:&quot;Wevapers&quot;}" __cid="cUBbQny"> 
         <div class="x-titlebar-left cUBbQny" xid="left1" __cid="cUBbQny"/>  
@@ -91,8 +91,8 @@
           </div> 
         </div>  
         <div class="x-contents-content x-cards content_forum cUBbQny" xid="content_forum" component="$model/UI2/system/components/justep/contents/content" data-bind="component:{name:'$model/UI2/system/components/justep/contents/content'}" __cid="cUBbQny"></div>  
-        <div class="x-contents-content  x-scroll-view content_msg cUBbQny" xid="content_msg" component="$model/UI2/system/components/justep/contents/content" data-bind="component:{name:'$model/UI2/system/components/justep/contents/content'}" __cid="cUBbQny">
-          <div class="x-scroll cUBbQny" component="$model/UI2/system/components/justep/scrollView/scrollView" xid="scrollView_msg" data-bind="component:{name:'$model/UI2/system/components/justep/scrollView/scrollView'}" __cid="cUBbQny"> 
+        <div class="x-contents-content  x-scroll-view content_msg cUBbQny" xid="content_msg" component="$model/UI2/system/components/justep/contents/content" data-bind="component:{name:'$model/UI2/system/components/justep/contents/content'}" data-events="onActive:content_msgActive" __cid="cUBbQny">
+          <div class="x-scroll cUBbQny" component="$model/UI2/system/components/justep/scrollView/scrollView" xid="scrollView_msg" data-bind="component:{name:'$model/UI2/system/components/justep/scrollView/scrollView'}" data-events="onPullDown:scrollView_msgPullDown;onPullUp:scrollView_msgPullUp" __cid="cUBbQny"> 
             <div class="x-content-center x-pull-down container cUBbQny" xid="div9" __cid="cUBbQny"> 
               <i class="x-pull-down-img glyphicon x-icon-pull-down cUBbQny" xid="i7" __cid="cUBbQny"/>  
               <span class="x-pull-down-label cUBbQny" xid="span11" __cid="cUBbQny">下拉刷新...</span>
@@ -111,8 +111,8 @@
                   </a> 
                 </div> 
               </div>  
-              <div component="$model/UI2/system/components/justep/list/list" class="x-list list_msg_same cUBbQny" xid="list_msg_sys" bind-visible=" $model.show_msg_sys()" data-bind="component:{name:'$model/UI2/system/components/justep/list/list'}" data-config="{&quot;limit&quot;:3}" __cid="cUBbQny"> 
-                <ul class="x-list-template hide cUBbQny" xid="listTemplateUl5" __cid="cUBbQny"> 
+              <div component="$model/UI2/system/components/justep/list/list" class="x-list list_msg_same cUBbQny" xid="list_msg_sys" bind-visible=" $model.show_msg_sys()" data-bind="component:{name:'$model/UI2/system/components/justep/list/list'}" data-config="{&quot;data&quot;:&quot;notify_sys&quot;,&quot;limit&quot;:3}" __cid="cUBbQny"> 
+                <ul class="x-list-template hide cUBbQny" xid="listTemplateUl5" bind-foreach="{data:$model.foreach_list_msg_sys($element),afterRender:$model.foreach_afterRender_list_msg_sys.bind($model,$element)}" __cid="cUBbQny"> 
                   <li xid="li5" __cid="cUBbQny" class="cUBbQny">
                     <div class="media cUBbQny" xid="media4" __cid="cUBbQny"> 
                       <div class="media-left cUBbQny" xid="mediaLeft5" __cid="cUBbQny"> 
@@ -121,14 +121,15 @@
                         </a> 
                       </div>  
                       <div class="media-body cUBbQny" xid="mediaBody5" __cid="cUBbQny"> 
-                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_msg_sys" data-bind="component:{name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/>
+                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_time_sys" bind-text=" $model.datelineToBeforeDay( val(&quot;dateline&quot;))" data-bind="component:{name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/>
+                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_msg_sys" data-bind="component:{ref:ref(&quot;note&quot;),name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/> 
                       </div> 
                     </div>
                   </li>
                 </ul> 
               </div>  
-              <div component="$model/UI2/system/components/justep/list/list" class="x-list list_msg_same cUBbQny" xid="list_msg_com" bind-visible=" $model.show_msg_com()" data-bind="component:{name:'$model/UI2/system/components/justep/list/list'}" data-config="{&quot;limit&quot;:3}" __cid="cUBbQny"> 
-                <ul class="x-list-template hide cUBbQny" xid="listTemplateUl6" __cid="cUBbQny"> 
+              <div component="$model/UI2/system/components/justep/list/list" class="x-list list_msg_same cUBbQny" xid="list_msg_com" bind-visible=" $model.show_msg_com()" data-bind="component:{name:'$model/UI2/system/components/justep/list/list'}" data-config="{&quot;data&quot;:&quot;notify_com&quot;,&quot;limit&quot;:-1}" __cid="cUBbQny"> 
+                <ul class="x-list-template hide cUBbQny" xid="listTemplateUl6" bind-foreach="{data:$model.foreach_list_msg_com($element),afterRender:$model.foreach_afterRender_list_msg_com.bind($model,$element)}" __cid="cUBbQny"> 
                   <li xid="li6" __cid="cUBbQny" class="cUBbQny">
                     <div class="media cUBbQny" xid="media5" __cid="cUBbQny"> 
                       <div class="media-left cUBbQny" xid="mediaLeft6" __cid="cUBbQny"> 
@@ -137,14 +138,15 @@
                         </a> 
                       </div>  
                       <div class="media-body cUBbQny" xid="mediaBody6" __cid="cUBbQny"> 
-                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_msg_com" bind-text="&quot;来自&quot; + &quot;的评论&quot;" data-bind="component:{name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/>
+                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_time_com" bind-text=" $model.datelineToBeforeDay( val(&quot;dateline&quot;))" data-bind="component:{name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/>
+                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_msg_com" data-bind="component:{ref:ref(&quot;note&quot;),name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/>
                       </div> 
                     </div>
                   </li>
                 </ul> 
               </div>  
-              <div component="$model/UI2/system/components/justep/list/list" class="x-list list_msg_same cUBbQny" xid="list_msg_atme" bind-visible=" $model.show_msg_atme()" data-bind="component:{name:'$model/UI2/system/components/justep/list/list'}" data-config="{&quot;limit&quot;:3}" __cid="cUBbQny"> 
-                <ul class="x-list-template hide cUBbQny" xid="listTemplateUl7" __cid="cUBbQny"> 
+              <div component="$model/UI2/system/components/justep/list/list" class="x-list list_msg_same cUBbQny" xid="list_msg_atme" bind-visible=" $model.show_msg_atme()" data-bind="component:{name:'$model/UI2/system/components/justep/list/list'}" data-config="{&quot;data&quot;:&quot;notify_atme&quot;,&quot;limit&quot;:-1}" __cid="cUBbQny"> 
+                <ul class="x-list-template hide cUBbQny" xid="listTemplateUl7" bind-foreach="{data:$model.foreach_list_msg_atme($element),afterRender:$model.foreach_afterRender_list_msg_atme.bind($model,$element)}" __cid="cUBbQny"> 
                   <li xid="li7" __cid="cUBbQny" class="cUBbQny">
                     <div class="media cUBbQny" xid="media6" __cid="cUBbQny"> 
                       <div class="media-left cUBbQny" xid="mediaLeft7" __cid="cUBbQny"> 
@@ -153,7 +155,8 @@
                         </a> 
                       </div>  
                       <div class="media-body cUBbQny" xid="mediaBody7" __cid="cUBbQny"> 
-                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_msg_atme" bind-text="&quot;来自&quot;  + &quot;的消息&quot;" data-bind="component:{name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/>
+                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_time_atme" bind-text=" $model.findThumbPicBytid( val(&quot;dateline&quot;))" data-bind="component:{name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/>
+                        <div component="$model/UI2/system/components/justep/output/output" class="x-output cUBbQny" xid="output_msg_atme" bind-text="&quot;来自&quot;  + &quot;的消息&quot;" data-bind="component:{ref:ref(&quot;note&quot;),name:'$model/UI2/system/components/justep/output/output'}" __cid="cUBbQny"/> 
                       </div> 
                     </div>
                   </li>
@@ -258,6 +261,6 @@
         </a> 
       </div> 
     </div>  
-    <style __cid="cUBbQny" class="cUBbQny">.x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-top {height: 48px;}.x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-content { top: 48px;bottom: nullpx;}.x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-bottom {height: nullpx;}.iosstatusbar .x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-top,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-top {height: 68px;}.iosstatusbar .x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-content,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-content { top: 68px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-top {height: 48px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p0edc18ff121b43fea41876ec49508b56-iosstatusbar &gt;.x-panel-content {top: 48px;}</style>
+    <style __cid="cUBbQny" class="cUBbQny">.x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-top {height: 48px;}.x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-content { top: 48px;bottom: nullpx;}.x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-bottom {height: nullpx;}.iosstatusbar .x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-top,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-top {height: 68px;}.iosstatusbar .x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-content,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-content { top: 68px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-top {height: 48px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p45071ede037d47fb8a73a8b256cf5fbf-iosstatusbar &gt;.x-panel-content {top: 48px;}</style>
   </div> 
 </div>

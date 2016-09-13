@@ -3,7 +3,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="main" component="$UI/system/components/justep/window/window"
   design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="width:346px;height:auto;top:37px;left:199px;"
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;width:106px;top:120px;left:347px;"
     onLoad="modelLoad"> 
     <div component="$UI/system/components/justep/shell/shell" xid="shell1"/> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="homeList" idColumn="tid"><column label="帖子id" name="fid" type="Integer" xid="xid1"></column>
@@ -15,7 +15,48 @@
   <column label="附件" name="attachment" type="String" xid="xid7"></column>
   <column label="发帖时间" name="dateline" type="Long" xid="xid8"></column>
   <column label="主题id" name="tid" type="Integer" xid="xid9"></column>
-  <column label="作者id" name="authorId" type="Integer" xid="xid10"></column></div></div>  
+  <column label="作者id" name="authorId" type="Integer" xid="xid10"></column></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="notify_sys" idColumn="id"><column label="用户id" name="uid" type="String" xid="xid11"></column>
+  <column label="消息id" name="id" type="Integer" xid="xid12"></column>
+  <column label="作者" name="author" type="String" xid="xid13"></column>
+  <column name="category" type="String" xid="xid14"></column>
+  <column name="from_idtype" type="String" xid="xid15"></column>
+  <column name="from_id" type="String" xid="xid16"></column>
+  <column label="是否新消息" name="news" type="Boolean" xid="xid17"></column>
+  <column label="作者id" name="authorid" type="String" xid="xid18"></column>
+  <column label="时间" name="dateline" type="Long" xid="xid19"></column>
+  <column label="类型" name="type" type="String" xid="xid20"></column>
+  <column name="from_num" type="String" xid="xid21"></column>
+  <column label="内容" name="note" type="String" xid="xid22"></column>
+  </div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="notify_com" idColumn="id"><column label="用户id" name="uid" type="String" xid="xid11"></column>
+  <column label="消息id" name="id" type="Integer" xid="xid23"></column>
+  <column label="作者" name="author" type="String" xid="xid24"></column>
+  <column name="category" type="String" xid="xid25"></column>
+  <column name="from_idtype" type="String" xid="xid26"></column>
+  <column name="from_id" type="String" xid="xid27"></column>
+  <column label="是否新消息" name="news" type="Boolean" xid="xid28"></column>
+  <column label="作者id" name="authorid" type="String" xid="xid29"></column>
+  <column label="时间" name="dateline" type="Long" xid="xid30"></column>
+  <column label="类型" name="type" type="String" xid="xid31"></column>
+  <column name="from_num" type="String" xid="xid32"></column>
+  <column label="内容" name="note" type="String" xid="xid33"></column>
+  </div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="notify_atme" idColumn="id"><column label="用户id" name="uid" type="String" xid="xid11"></column>
+  <column label="消息id" name="id" type="Integer" xid="xid34"></column>
+  <column label="作者" name="author" type="String" xid="xid35"></column>
+  <column name="category" type="String" xid="xid36"></column>
+  <column name="from_idtype" type="String" xid="xid37"></column>
+  <column name="from_id" type="String" xid="xid38"></column>
+  <column label="是否新消息" name="news" type="Boolean" xid="xid39"></column>
+  <column label="作者id" name="authorid" type="String" xid="xid40"></column>
+  <column label="时间" name="dateline" type="Long" xid="xid41"></column>
+  <column label="类型" name="type" type="String" xid="xid42"></column>
+  <column name="from_num" type="String" xid="xid43"></column>
+  <column label="内容" name="note" type="String" xid="xid44"></column>
+  </div>
+  
+  </div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar header"
     xid="panel1"> 
     <div class="x-panel-top top1" xid="top1"> 
@@ -112,7 +153,7 @@
         </div>  
         <div class="x-contents-content x-cards content_forum" xid="content_forum"> 
           </div>  
-        <div class="x-contents-content  x-scroll-view content_msg" xid="content_msg"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_msg">
+        <div class="x-contents-content  x-scroll-view content_msg" xid="content_msg" onActive="content_msgActive"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_msg" onPullDown="scrollView_msgPullDown" onPullUp="scrollView_msgPullUp">
    <div class="x-content-center x-pull-down container" xid="div9">
     <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i7"></i>
     <span class="x-pull-down-label" xid="span11">下拉刷新...</span></div> 
@@ -126,31 +167,33 @@
    <span xid="span15">@我</span></a>
    </div>
   </div>
-  <div component="$UI/system/components/justep/list/list" class="x-list list_msg_same" xid="list_msg_sys" bind-visible=" $model.show_msg_sys()" limit="3">
+  <div component="$UI/system/components/justep/list/list" class="x-list list_msg_same" xid="list_msg_sys" bind-visible=" $model.show_msg_sys()" limit="3" data="notify_sys">
    <ul class="x-list-template" xid="listTemplateUl5">
     <li xid="li5"><div class="media" xid="media4">
    <div class="media-left" xid="mediaLeft5">
     <a href="#" xid="a2">
      <img class="media-object" src="" alt="" xid="image2" bind-attr-src=' $model.toUrl("./images/message_icon1.gif")'></img></a> </div> 
    <div class="media-body" xid="mediaBody5">
-    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_sys"></div></div> </div></li></ul> 
+    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_time_sys" bind-text=' $model.datelineToBeforeDay( val("dateline"))'></div><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_sys" bind-ref='ref("note")'></div>
+  </div> </div></li></ul> 
   </div>
-    <div component="$UI/system/components/justep/list/list" class="x-list list_msg_same" xid="list_msg_com" bind-visible=" $model.show_msg_com()" limit="3">
+    <div component="$UI/system/components/justep/list/list" class="x-list list_msg_same" xid="list_msg_com" bind-visible=" $model.show_msg_com()" limit="-1" data="notify_com">
    <ul class="x-list-template" xid="listTemplateUl6">
     <li xid="li6"><div class="media" xid="media5">
    <div class="media-left" xid="mediaLeft6">
     <a href="#" xid="a3">
      <img class="media-object" src="" alt="" xid="image21" bind-attr-src='$model.toUrl("./images/message_icon1.gif")'></img></a> </div> 
    <div class="media-body" xid="mediaBody6">
-    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_com" bind-text='"来自" + "的评论"'></div></div> </div></li></ul> </div>
-  <div component="$UI/system/components/justep/list/list" class="x-list list_msg_same" xid="list_msg_atme" limit="3" bind-visible=" $model.show_msg_atme()">
+    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_time_com" bind-text=' $model.datelineToBeforeDay( val("dateline"))'></div><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_com" bind-ref='ref("note")'></div></div> </div></li></ul> </div>
+  <div component="$UI/system/components/justep/list/list" class="x-list list_msg_same" xid="list_msg_atme" limit="-1" bind-visible=" $model.show_msg_atme()" data="notify_atme">
    <ul class="x-list-template" xid="listTemplateUl7">
     <li xid="li7"><div class="media" xid="media6">
    <div class="media-left" xid="mediaLeft7">
     <a href="#" xid="a4">
      <img class="media-object" src="" alt="" xid="image22" bind-attr-src='$model.toUrl("./images/message_icon1.gif")'></img></a> </div> 
    <div class="media-body" xid="mediaBody7">
-    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_atme" bind-text='"来自"  + "的消息"'></div></div> </div></li></ul> </div></div>
+    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_time_atme" bind-text=' $model.findThumbPicBytid( val("dateline"))'></div><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_atme" bind-text='"来自"  + "的消息"' bind-ref='ref("note")'></div>
+  </div> </div></li></ul> </div></div>
 
    <div class="x-content-center x-pull-up" xid="div11">
     <span class="x-pull-up-label" xid="span12">加载更多...</span></div> </div></div>
