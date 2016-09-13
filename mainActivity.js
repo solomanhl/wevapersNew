@@ -6,7 +6,7 @@ define(function(require){
 	var Model = function(){
 		this.callParent();
 		
-		this.server = "http://wevapers.gkybi.com.cn/";
+		this.server = "http://wevapers.gkybi.com.cn";
 		this.imgserver = "http://www.wevapers.com.cn";
 		
 		this.localUserLoaded = false;
@@ -39,6 +39,22 @@ define(function(require){
 	//图片路径转换
 	Model.prototype.toUrl = function(url){
 		return url ? require.toUrl(url) : "";	
+	};
+	
+	
+	//首页帖子上拉刷新
+	Model.prototype.scrollView1PullDown = function(event){
+		this.pageNo_homelist = 1;
+		this.pageCount_homelist = 1;
+		this.getHomeList(false);
+	};
+	
+	//首页帖子下拉加载更多
+	Model.prototype.scrollView1PullUp = function(event){
+		if (this.pageNo_homelist < this.pageCount_homelist){
+			this.pageNo_homelist ++;
+			this.getHomeList(true);
+		}
 	};
 	
 	//获取首页列表
@@ -79,7 +95,7 @@ define(function(require){
 //	        	);
 	        	
 	        	if (pageNoObj > 0){
-		        	json={"@type" : "table","homeList" : {"idColumnName" : "fid","idColumnType" : "Integer", },"rows" :threadsObj };
+		        	json={"@type" : "table","homeList" : {"idColumnName" : "tid","idColumnType" : "Integer", },"rows" :threadsObj };
 		        	data.loadData(json, isApend);
 		        	
 //		        	alert(data.count());
@@ -139,8 +155,8 @@ define(function(require){
 	
 	//找附件图片
 	Model.prototype.findThumbPicBytid = function(attachment){
-		var rtn = this.toUrl("./images/forum_default.jpg" );
-		if (attachment !="" || attachment!= null){
+		var rtn = this.toUrl("./images/forum_default.jpg1" );
+		if (attachment !="" && attachment!= null){
 			rtn = this.imgserver + "/data/attachment/forum/" + attachment;
 		}
 		
@@ -180,8 +196,11 @@ define(function(require){
 //		var url = require.toUrl("./detailActivity.w?p1=p1Value&p2=p2Value");
 		var url = require.toUrl("./detailActivity.w");
 //		var tid = this.comp("homeList").getCurrentRow().val("tid");
+//		alert(tid);
 	    var params = {
 	        from : "mainActivity",
+	        // 将data中的一行数据传给对话框
+	        data_post : this.comp("homeList").getCurrentRow().toJson(),
 //	        subject : current.val("subject"),//这里val为什么报错
 	        data : {
 //	            fn : function() {
@@ -316,6 +335,8 @@ define(function(require){
 		var url = require.toUrl('./newPostActivity.w');
 	   justep.Shell.showPage(url);
 	};
+	
+
 	
 	
 	return Model;

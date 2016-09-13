@@ -5,6 +5,8 @@ define(function(require){
 	var Model = function(){
 		this.callParent();
 		
+		this.server = "http://wevapers.gkybi.com.cn";
+		
 		this.pre_forum_post;
 		this.pre_forum_thread;
 //		this.post;
@@ -16,6 +18,9 @@ define(function(require){
 		this.author;
 		this.views;
 		this.replies;
+		
+		this.pageNo=1;
+		this.pageCount=1;
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -47,48 +52,126 @@ define(function(require){
 //	    alert(event.params.data.data_post);
 
 	    var me = this;
-	    var data_post = event.params.data.data_post;
+	    var from = event.params.from;
+	    var data_post = event.params.data_post;
+//	    alert(from + data_post);
 	   
-	    this.comp("post").loadData([data_post]);
-	    this.comp("post").first();
+	    var post = this.comp("post");
+	    post.loadData([data_post]);
+	    post.first();
+
 	    
+	    this.subject = post.val("subject");
+	    this.author = post.val("author");
+	    this.tid = post.val("tid");
+		this.views = post.val("views");
+		this.replies = post.val("replies");
+		
+		this.getMessage(this.tid);
+		this.getReplies(this.tid, false);
+		
 	    
-	    this.subject = this.comp("post").val("subject");
-	    this.author = this.comp("post").val("author");
-	    this.tid = this.comp("post").val("tid");
-	    
-	    var post = this.comp("post").find(["tid"], [this.tid], false, true, true,true  );
-	    
-////	    alert(this.tid);
-//	    var pre_forum_post = this.comp("pre_forum_post");
-//	    pre_forum_post.setFilter("filter1", "tid = '" + this.tid + "' and first = false");
-//	    pre_forum_post.refreshData();//这里一定要刷新一次
-////	    alert(this.comp("pre_forum_post").count());
-//	    
-//	    this.pre_forum_thread = this.comp("pre_forum_thread").find(["tid"], [this.tid]);
-//	    if (this.pre_forum_thread.length > 0){
-//			$.each(post, function(i,item){      
-////				alert(i);   
-////			    alert(item);
-////				alert(item.val("tid"));
-//			    if (item.val("first")){
-//			    	me.message = item.val("message");
-//			    }
-//			});
-//	    
-//		this.views = this.pre_forum_thread[0].val("views");
-//		this.replies = this.pre_forum_thread[0].val("replies");
-//		
-//	    this.updateUI();
-//	    }
+
+	};
+	
+	//获取message
+	Model.prototype.getMessage = function(tid){
+		var me = this;
+	
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/ForumTopPostServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"tid" : tid
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.message);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+	        	
+	        	me.message = resultData.message;
+//	        	alert(me.message );
+	        	me.updateUI();
+	        	
+//	        	alert(me.totalPage_study);
+//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
+	};
+	
+	//获取replies
+	Model.prototype.getReplies = function(tid, isApend){
+		var me = this;
+		var data = this.comp("replies");
+		
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/ForumThreadListServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"tid" : tid,
+	        	"pageNo" : me.pageNo
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.message);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+	        	var pageCount, pageNo, threadsObj;
+	        	
+	        	pageCount = resultData.pageCount;
+	        	pageNo = resultData.pageNo;
+	        	threadsObj = resultData.threads;
+	        	
+	        	me.pageCount = pageCount;
+	        	me.pageNo = pageNo;
+	        	
+//	        	alert(pageNo);
+//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+	        	if (pageNo > 0){
+		        	json={"@type" : "table","replies" : {"idColumnName" : "tid","idColumnType" : "Integer", },"rows" :threadsObj };
+		        	data.loadData(json, isApend);
+		        	
+//		        	alert(data.count());
+	        	}
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
 	};
 	
 	Model.prototype.updateUI = function(){
+//	alert(this.message);
 		this.comp("output_subject").set({value:this.subject});
 		this.comp("output_author").set({value:this.author});
 		this.comp("output_views").set({value:"浏览" + this.views + "次"});
 		this.comp("output_replies").set({value:this.replies + "评论"});
-		this.comp("output_message").set({value:this.replace(this.message)});
+		this.comp("output_message").set({value:this.message});
 //		this.comp("output_message").set({value:"<img src=\"http://wevapers.com.cn//mobcent//app/data/phiz/default/16.png\">"});
 	}
 	
@@ -119,13 +202,28 @@ define(function(require){
 		rtn = rtn.replace(/\[/g,'<'); //将a里面的[字符都换成了‘呵呵’.
 		rtn = rtn.replace(/\]/g,'>');
 		
-		alert(rtn);
+//		alert(rtn);
 //		$("output_comment_message").attr("text").replace("[", "<");
 		return rtn;
 	};
 	
 	Model.prototype.image_commentClick = function(event){
 
+	};
+
+	
+	Model.prototype.scrollView1PullDown = function(event){
+		this.pageNo = 1;
+		this.pageCount = 1;
+		this.getReplies(this.tid, false);
+	};
+
+	
+	Model.prototype.scrollView1PullUp = function(event){
+		if (this.pageNo < this.pageCount){
+			this.pageNo ++;
+			this.getReplies(this.tid, true);
+		}
 	};
 
 	

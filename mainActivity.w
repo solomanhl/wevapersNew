@@ -6,7 +6,7 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="width:346px;height:auto;top:37px;left:199px;"
     onLoad="modelLoad"> 
     <div component="$UI/system/components/justep/shell/shell" xid="shell1"/> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="homeList" idColumn="fid"><column label="帖子id" name="fid" type="Integer" xid="xid1"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="homeList" idColumn="tid"><column label="帖子id" name="fid" type="Integer" xid="xid1"></column>
   <column label="作者" name="author" type="String" xid="xid2"></column>
   <column label="回复数量" name="replies" type="Integer" xid="xid3"></column>
   <column label="查看数量" name="views" type="Integer" xid="xid4"></column>
@@ -41,7 +41,7 @@
         active="0" xid="contents1"> 
         <div class="x-contents-content x-scroll-view" xid="content_home"> 
           <div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView"
-            xid="scrollView1"> 
+            xid="scrollView1" onPullDown="scrollView1PullDown" onPullUp="scrollView1PullUp"> 
             <div class="x-content-center x-pull-down container" xid="div1"> 
               <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i1"/>  
               <span class="x-pull-down-label" xid="span2">下拉刷新...</span> 
@@ -49,12 +49,24 @@
             <div class="x-scroll-content" xid="div2"> 
               <div class="col-xs-6 tb-twoColList lists1"> 
                 <div component="$UI/system/components/justep/list/list" class="x-list x-cards x-flex"
-                  xid="list1" data="homeList" limit="10" bind-click="listClick"> 
+                  xid="list1" data="homeList" limit="5" bind-click="listClick" filter=' $row.val("tid") % 2 == 0'> 
                   <ul class="x-list-template" xid="listTemplateUl1" style="width:100%;"> 
                     <li xid="li1" class="home_list"> 
                       <div xid="div7"> 
+                        <div class="big_img">
                         <img alt="" xid="image1" style="width:100%;" height="auto"
-                          bind-attr-src='$model.findThumbPicBytid( val("attachment"))' class="img-responsive"/>  
+                          bind-attr-src='$model.findThumbPicBytid( val("attachment"))' class="img-responsive"/>
+                          </div>
+                          <div xid="media1" class="media"> 
+                            <div xid="mediaLeft1" class="media-left"> 
+                              <!-- <img src="" alt="" xid="image1" bind-attr-src=" "/> -->
+                            </div>  
+                            <div xid="mediaBody1" class="media-body"> 
+                              <div component="$UI/system/components/justep/output/output"
+                                class="x-output center-block user_name" xid="output10"
+                                bind-ref="ref(&quot;author&quot;)"/>  
+                              </div> 
+                          </div>  
                         <div component="$UI/system/components/justep/output/output"
                           class="x-output title" xid="output1" bind-ref="ref(&quot;subject&quot;)"/>  
                         <div xid="div4" class="comment"> 
@@ -63,26 +75,35 @@
                           <div component="$UI/system/components/justep/output/output"
                             class="x-output time" xid="output1" bind-text='$model.datelineToBeforeDay(  val("lastpost"))'/>  
                           <img src="" alt="" xid="image3" bind-attr-src="$model.toUrl(&quot;./images/browse_icon.png&quot;)"
-                            style="background-color:transparent;width:16px;" height="auto"/>  
+                            style="background-color:transparent;" class="comm_icon" />  
                           <div component="$UI/system/components/justep/output/output"
                             class="x-output div_AllInLine amount" xid="output9" bind-text=' val("views")'/>
                         </div>
-                        <div xid="media1" class="media"> 
-                          <div xid="mediaLeft1" class="media-left"> 
-                            <!-- <img src="" alt="" xid="image1" bind-attr-src=" "/> -->
-                          </div>  
-                          <div xid="mediaBody1" class="media-body"> 
-                            <div component="$UI/system/components/justep/output/output"
-                              class="x-output center-block user_name" xid="output10"
-                              bind-ref="ref(&quot;author&quot;)"/>  
-                            </div> 
-                        </div>
+                        
                       </div>
                     </li> 
                   </ul> 
                 </div> 
               </div>
-              <div xid="div5" class="clearfix"/>
+              <div class="col-xs-6 tb-twoColList lists2" xid="div12">
+   <div component="$UI/system/components/justep/list/list" class="x-list x-cards x-flex" xid="list2" data="homeList" limit="5" bind-click="listClick" filter=' $row.val("tid") % 2 == 1'>
+    <ul class="x-list-template" xid="listTemplateUl2" style="width:100%;">
+     <li xid="li2" class="home_list">
+      <div xid="div6">
+        <div class="big_img">
+       <img alt="" xid="image7" style="width:100%;" height="auto" bind-attr-src='$model.findThumbPicBytid( val("attachment"))' class="img-responsive"></img>
+     </div>
+       <div xid="media2" class="media">
+        <div xid="mediaLeft2" class="media-left"></div>
+        <div xid="mediaBody2" class="media-body">
+         <div component="$UI/system/components/justep/output/output" class="x-output center-block user_name" xid="output4" bind-ref='ref("author")'></div></div> </div>
+       <div component="$UI/system/components/justep/output/output" class="x-output title" xid="output2" bind-ref='ref("subject")'></div>
+       <div xid="div8" class="comment">
+        <img src="" alt="" xid="image4" class="time_icon" bind-attr-src='$model.toUrl("./images/time_icon.png")'></img>
+        <div component="$UI/system/components/justep/output/output" class="x-output time" xid="output2" bind-text='$model.datelineToBeforeDay(  val("lastpost"))'></div>
+        <img src="" alt="" xid="image6" bind-attr-src='$model.toUrl("./images/browse_icon.png")' style="background-color:transparent;"  class="comm_icon"></img>
+        <div component="$UI/system/components/justep/output/output" class="x-output div_AllInLine amount" xid="output3" bind-text=' val("views")'></div></div> 
+        </div> </li> </ul> </div> </div><div xid="div5" class="clearfix"/>
             </div>  
             <div class="x-content-center x-pull-up" xid="div3"> 
               <span class="x-pull-up-label" xid="span3">加载更多...</span> 
