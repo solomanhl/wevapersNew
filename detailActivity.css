@@ -1,2 +1,38 @@
+.details .x-titlebar{background:#21b589;color: #fff}
+.details .x-titlebar-title{font-weight: normal;}
+.details .x-titlebar-right img{width:2rem;margin-right: 0.8rem;}
 
-.div-inline{ display:inline}
+/*标题栏*/
+
+.details .x-panel-content{background: #fff}
+.details .x-panel-content .article{padding: 1rem 3%;}
+.details .x-panel-content .article .subject{font-size: 1.5rem;line-height: 2rem;margin-bottom: 1rem;padding:0;}
+.details .x-panel-content .article .media{border-bottom: 1px solid #e9e9e9;padding:0 0 0.9rem;margin-bottom: 1rem;margin-top: 0;}
+.details .x-panel-content .article .media .media-left{padding:0;}
+.details .x-panel-content .article .media .media-body .author{font-size: 0.9rem;padding:0;float: left;color: #21b589}
+.details .x-panel-content .article .media .media-body .div2{float: left;margin-left: 1rem;color: #959595;}
+.details .x-panel-content .article .media .media-body .views{color: #959595;font-size: 0.9rem;padding: 0;display: inline-block;margin-right: 0.5rem}
+.details .x-panel-content .article .media .media-body .replies{color: #959595;font-size: 0.9rem;padding: 0;display: inline-block;margin-left: 0.5rem}
+.details .x-panel-content .article .message{font-size: 1.15rem;line-height: 1.9rem;color: #777;padding:0.6rem 0 1rem;}
+
+/*文章内容*/
+
+.details .x-panel-content .comm_list{background: #fff;padding: 0 0 0 3%;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9;}
+.details .x-panel-content .comm_list li{padding: 1rem 3% 1rem 0;border-bottom: 1px solid #e9e9e9}
+.details .x-panel-content .comm_list li .list_top{overflow: hidden;position: relative;height: 1.4rem;line-height: 1.4rem;margin-bottom: 0.8rem}
+.details .x-panel-content .comm_list li .list_top .author{font-size: 1rem;font-weight: bold;padding:0;}
+.details .x-panel-content .comm_list li .list_top img{position: absolute;right: 0;top: 0;height: 1.4rem;width: 1.4rem;display: block;}
+.details .x-panel-content .comm_list li .message{padding:0;color: #959595;font-size: 1.2rem;line-height: 1.7rem;margin-bottom: 1rem;}
+.details .x-panel-content .comm_list li:last-child{border-bottom: none;}
+
+/*帖子列表*/
+
+.details .x-panel-bottom{height: 4rem;padding: 0.6rem 3%;background: #f5f5f5;border-top: 1px solid #dfdfdf;}
+.details .x-panel-bottom input{width: 82%;background: #fff}
+.details .x-panel-bottom .div-inline{overflow: hidden;position: relative;height: 2.8rem;line-height: 2.8rem;}
+.details .x-panel-bottom .div-inline span{position: absolute;right: 0;top: 0;width: 14%;color: #fff;display: block;border-radius: 4px;text-align: center;background: #21b589;font-size: 1.1rem;}
+
+/*底部*/
+
+
+

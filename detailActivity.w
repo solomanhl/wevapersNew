@@ -26,7 +26,7 @@
   
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+    class="x-panel x-full details" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" title="详情"
           class="x-titlebar">
@@ -40,8 +40,7 @@
           </div>  
           <div class="x-titlebar-title">详情</div>  
           <div class="x-titlebar-right reverse"> 
-          <img alt="" xid="image_share" bind-attr-src='$model.toUrl("./images/share1.png")'></img>
-  <img alt="" xid="image_favor" bind-attr-src='$model.toUrl("./images/collect.png")'></img></div>
+          <img alt="" xid="image_share" bind-attr-src='$model.toUrl("./images/share3.png")'></img></div>
         </div> 
       </div>  
     <div class="x-panel-content  x-scroll-view" xid="content1" _xid="C7284A94D7E00001EE921BD0EF207B00" style="bottom: 0px;">
@@ -51,26 +50,36 @@
    <div class="x-content-center x-pull-down container" xid="div1">
     <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i1"></i>
     <span class="x-pull-down-label" xid="span1">下拉刷新...</span></div> 
-   <div class="x-scroll-content" xid="div4"><div xid="div6"><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_subject"></div><div class="media" xid="media1">
+   <div class="x-scroll-content" xid="div4"><div xid="div6" class="article"><div component="$UI/system/components/justep/output/output" class="x-output subject" xid="output_subject"></div><div class="media" xid="media1">
    <div class="media-left" xid="mediaLeft1">
     <!-- <a href="#" xid="a1">
      <img class="media-object" src="" alt="" xid="image3" bind-attr-src='$model.toUrl("./images/user_img.png")'></img>
      </a>  -->
      </div> 
    <div class="media-body" xid="mediaBody1">
-    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_author"></div><div xid="div2"><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_views"></div>
-  <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_replies"></div>
+    <div component="$UI/system/components/justep/output/output" class="x-output author" xid="output_author"></div><div xid="div2" class="div2"><div component="$UI/system/components/justep/output/output" class="x-output views" xid="output_views"></div>|
+  <div component="$UI/system/components/justep/output/output" class="x-output replies" xid="output_replies"></div>
   </div>
-  </div> </div><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_message"></div></div>
-  <div component="$UI/system/components/justep/list/list" class="x-list x-cards" xid="list_comment" data="replies">
+  </div> </div><div component="$UI/system/components/justep/output/output" class="x-output message" xid="output_message"></div>
+</div>
+  <div component="$UI/system/components/justep/list/list" class="x-list x-cards comm_list" xid="list_comment" data="replies">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1">
     <!-- <img src="" alt="" xid="image_comment_head" bind-attr-src='$model.toUrl("./images/user_img.png")'></img> -->
-  <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_comment_author" bind-ref='ref("author")'></div><img src="" alt="" xid="image_comment" bind-attr-src=' $model.toUrl("./images/comment_icon.png")' bind-click="image_commentClick"></img><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_comment_message" id="output_comment_message" bind-ref='ref("subject")'></div>
+    <div class="list_top">
+  <div component="$UI/system/components/justep/output/output" class="x-output author" xid="output_comment_author" bind-ref='ref("author")'></div><img src="" alt="" xid="image_comment" bind-attr-src=' $model.toUrl("./images/comment_icon1.png")' bind-click="image_commentClick"></img>
+  </div>
+  <div component="$UI/system/components/justep/output/output" class="x-output message" xid="output_comment_message" id="output_comment_message" bind-ref='ref("subject")'></div>
   </li></ul> </div></div>
    <div class="x-content-center x-pull-up" xid="div5">
     <span class="x-pull-up-label" xid="span2">加载更多...</span></div> </div>
   </div>
-  <div class="x-panel-bottom" xid="bottom1"><div xid="div7" class="div-inline"><img src="" alt="" xid="image5" bind-attr-src=' $model.toUrl("./images/share2.png")' class="div-inline"></img>
-  <input component="$UI/system/components/justep/input/input" class="form-control div-inline" xid="input_comment" placeHolder="回复楼主……"></input></div></div></div> 
+  <div class="x-panel-bottom" xid="bottom1"><div xid="div7" class="div-inline">
+  <input type="text" component="$UI/system/components/justep/input/input" class="form-control div-inline" xid="input_comment" placeHolder="回复楼主……"></input>
+  <span class="send">发送</span>
+</div></div></div> 
+  <resource xid="resource2">
+    <require xid="require1" url="css!$UI/wevapers/base"/>  
+    <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"/> 
+  </resource>
 </div>

@@ -14,6 +14,8 @@ define(function(require){
 		this.onError = function(msg) {
 //			justep.Util.hint("Toast error: "+msg);
 		}
+		
+		this.server = "http://wevapers.gkybi.com.cn";
 	};
 	
 	//图片路径转换
@@ -27,12 +29,86 @@ define(function(require){
 //		justep.Shell.closePage();
 
 		var uname = this.comp("input_username").val();
+		var password = this.comp("password1").val();
+		
+		if (uname == "" || password == ""){
+			window.plugins.toast.show("请输入用户名或密码", "long", "center");
+		}else{
+			this.login(uname, password);
+		}
+	};
+
+	Model.prototype.login = function(uname, password){
+		var me = this;
+		
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/LoginServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"username" : uname,
+	        	"password" : password
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.result);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+	        	var status, uid;	
+	        	status = resultData.status;
+	        	uid = resultData.uid;
+	        	
+//	        	alert(status);
+//	        	alert(notificationsObj + "/" + JSON.stringify(notificationsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+	        	if (status == 1){ //成功
+		        	if (justep.Browser.isX5App){
+		        		window.plugins.toast.show("登录成功", "long", "center");
+		        	}
+		        	me.saveLocal(uname, password, uid, status);
+		        	justep.Shell.closePage();		        	
+	        	}else if (status == 0){ //用户不存在
+		        	if (justep.Browser.isX5App){
+		        		window.plugins.toast.show("用户不存在", "long", "center");
+		        	}
+	        	}else if (status == -1){ //密码错误
+		        	if (justep.Browser.isX5App){
+		        		window.plugins.toast.show("登录失败", "long", "center");
+		        	}
+	        	}
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
+	};
+
+	//保存到本地
+	Model.prototype.saveLocal = function (uname, password, uid, status){
+		localStorage.setItem('uname',uname); 
+		localStorage.setItem('password',password); 
+		localStorage.setItem('uid',uid); 
+		localStorage.setItem('status',status);
+	};
+	
+	Model.prototype.image_closeClick = function(event){
+		justep.Shell.closePage();
 	};
 
 
 
-	Model.prototype.image_closeClick = function(event){
-		justep.Shell.closePage();
+	Model.prototype.modelUnLoad = function(event){
+		setTimeout(function(){
+			justep.Shell.fireEvent("onRefreshUser", {});
+		},5);
 	};
 
 

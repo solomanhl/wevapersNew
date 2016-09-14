@@ -3,7 +3,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="main" component="$UI/system/components/justep/window/window"
   design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="width:189px;height:auto;top:33px;left:21px;">
+  <div component="$UI/system/components/justep/model/model" xid="model" style="width:189px;height:auto;top:33px;left:21px;" onunLoad="modelUnLoad">
     </div>  
   <div xid="div1" class="wrapper"> 
     <img src="$UI/wevapers/images/login_close.png" alt="" xid="image_close" class="close"

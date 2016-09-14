@@ -4,7 +4,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="main" component="$UI/system/components/justep/window/window"
   design="device:m;">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;width:106px;top:120px;left:347px;"
-    onLoad="modelLoad"> 
+    onLoad="modelLoad" onunLoad="modelUnLoad"> 
     <div component="$UI/system/components/justep/shell/shell" xid="shell1"/> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="homeList" idColumn="tid"><column label="帖子id" name="fid" type="Integer" xid="xid1"></column>
   <column label="作者" name="author" type="String" xid="xid2"></column>
@@ -29,31 +29,31 @@
   <column name="from_num" type="String" xid="xid21"></column>
   <column label="内容" name="note" type="String" xid="xid22"></column>
   </div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="notify_com" idColumn="id"><column label="用户id" name="uid" type="String" xid="xid11"></column>
-  <column label="消息id" name="id" type="Integer" xid="xid23"></column>
-  <column label="作者" name="author" type="String" xid="xid24"></column>
-  <column name="category" type="String" xid="xid25"></column>
-  <column name="from_idtype" type="String" xid="xid26"></column>
-  <column name="from_id" type="String" xid="xid27"></column>
-  <column label="是否新消息" name="news" type="Boolean" xid="xid28"></column>
-  <column label="作者id" name="authorid" type="String" xid="xid29"></column>
-  <column label="时间" name="dateline" type="Long" xid="xid30"></column>
-  <column label="类型" name="type" type="String" xid="xid31"></column>
-  <column name="from_num" type="String" xid="xid32"></column>
-  <column label="内容" name="note" type="String" xid="xid33"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="notify_com" idColumn="id"><column label="用户id" name="uid" type="String" xid="xid23"></column>
+  <column label="消息id" name="id" type="Integer" xid="xid24"></column>
+  <column label="作者" name="author" type="String" xid="xid25"></column>
+  <column name="category" type="String" xid="xid26"></column>
+  <column name="from_idtype" type="String" xid="xid27"></column>
+  <column name="from_id" type="String" xid="xid28"></column>
+  <column label="是否新消息" name="news" type="Boolean" xid="xid29"></column>
+  <column label="作者id" name="authorid" type="String" xid="xid30"></column>
+  <column label="时间" name="dateline" type="Long" xid="xid31"></column>
+  <column label="类型" name="type" type="String" xid="xid32"></column>
+  <column name="from_num" type="String" xid="xid33"></column>
+  <column label="内容" name="note" type="String" xid="xid34"></column>
   </div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="notify_atme" idColumn="id"><column label="用户id" name="uid" type="String" xid="xid11"></column>
-  <column label="消息id" name="id" type="Integer" xid="xid34"></column>
-  <column label="作者" name="author" type="String" xid="xid35"></column>
-  <column name="category" type="String" xid="xid36"></column>
-  <column name="from_idtype" type="String" xid="xid37"></column>
-  <column name="from_id" type="String" xid="xid38"></column>
-  <column label="是否新消息" name="news" type="Boolean" xid="xid39"></column>
-  <column label="作者id" name="authorid" type="String" xid="xid40"></column>
-  <column label="时间" name="dateline" type="Long" xid="xid41"></column>
-  <column label="类型" name="type" type="String" xid="xid42"></column>
-  <column name="from_num" type="String" xid="xid43"></column>
-  <column label="内容" name="note" type="String" xid="xid44"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="notify_atme" idColumn="id"><column label="用户id" name="uid" type="String" xid="xid35"></column>
+  <column label="消息id" name="id" type="Integer" xid="xid36"></column>
+  <column label="作者" name="author" type="String" xid="xid37"></column>
+  <column name="category" type="String" xid="xid38"></column>
+  <column name="from_idtype" type="String" xid="xid39"></column>
+  <column name="from_id" type="String" xid="xid40"></column>
+  <column label="是否新消息" name="news" type="Boolean" xid="xid41"></column>
+  <column label="作者id" name="authorid" type="String" xid="xid42"></column>
+  <column label="时间" name="dateline" type="Long" xid="xid43"></column>
+  <column label="类型" name="type" type="String" xid="xid44"></column>
+  <column name="from_num" type="String" xid="xid45"></column>
+  <column label="内容" name="note" type="String" xid="xid46"></column>
   </div>
   
   </div>  
@@ -192,7 +192,7 @@
     <a href="#" xid="a4">
      <img class="media-object" src="" alt="" xid="image22" bind-attr-src='$model.toUrl("./images/message_icon1.gif")'></img></a> </div> 
    <div class="media-body" xid="mediaBody7">
-    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_time_atme" bind-text=' $model.findThumbPicBytid( val("dateline"))'></div><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_atme" bind-text='"来自"  + "的消息"' bind-ref='ref("note")'></div>
+    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_time_atme" bind-text=' $model.datelineToBeforeDay( val("dateline"))'></div><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_msg_atme" bind-ref='ref("note")'></div>
   </div> </div></li></ul> </div></div>
 
    <div class="x-content-center x-pull-up" xid="div11">
@@ -203,16 +203,16 @@
             <div class="media" xid="media_me"> 
               <div class="media-left" xid="mediaLeft4"> 
                 <a href="#" xid="a1"> 
-                  <img class="media-object" alt="" xid="image_me" bind-attr-src="$model.toUrl(&quot;./images/user_img.png&quot;)"/>
+                  <!-- <img class="media-object" alt="" xid="image_me" bind-attr-src="$model.toUrl(&quot;./images/user_img.png&quot;)"/> -->
                 </a> 
               </div>  
               <div class="media-body" xid="mediaBody4"> 
                 <div component="$UI/system/components/justep/output/output"
-                  class="x-output" xid="output_username" bind-text="localStorage['username']"/>
+                  class="x-output" xid="output_username" id="output_username" bind-text="localStorage['username']"/>
               </div> 
             </div>  
             <a component="$UI/system/components/justep/button/button" class="btn btn-default"
-              label="立即登录" xid="button_login_now" onClick="loginNow" bind-visible=" ! $model.getLoginState()"> 
+              label="立即登录" xid="button_login_now" id="button_login_now" onClick="loginNow" bind-visible=" ! $model.getLoginState()"> 
               <span xid="span10">立即登录</span>
             </a>
           </div>

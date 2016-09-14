@@ -13,6 +13,7 @@ define(function(require){
 		this.username;
 		this.password;
 		this.uid;
+		this.status;
 		this.login;
 		
 		this.pageNo_homelist=1;
@@ -35,11 +36,60 @@ define(function(require){
 	Model.prototype.modelLoad = function(event) {
 		var self = this;
 //		localStorage.setItem('username','测试用户');
-		this.loadUser();
+		//添加事件
+		justep.Shell.on("onRefreshUser", this.onRefreshUser, this);
+		
+		this.getUserStatus();
 		
 		justep.Shell.setIsSinglePage(true);
 		this.getHomeList(false);
 	}
+	
+		
+	Model.prototype.modelUnLoad = function(event){
+		//卸载事件
+		justep.Shell.off("onRefreshUser", this.onRefreshUser);
+	};
+	
+	Model.prototype.onRefreshUser = function(event){
+		this.getUserStatus();
+		
+	};
+	
+	//获取用户信息
+	Model.prototype.getUserStatus = function(){
+		this.username = localStorage.getItem('uname');
+		this.password = localStorage.getItem('password');
+		this.uid = localStorage.getItem('uid');
+		this.status = localStorage.getItem('status');
+		
+		//刷新用户
+		if (this.username == "" || this.username == null){
+			$("#button_login_now").text("请登录");
+			$("#output_username").text("还没有登录哦");
+		}else{
+			$("#button_login_now").text("退出账号");
+			$("#output_username").text(this.username);
+		}
+		
+	};
+	
+		
+	//清除登录用户信息
+	Model.prototype.clearUser = function(){
+
+		this.username = "";
+		localStorage.setItem('uname', '');
+		this.password = "";
+		localStorage.setItem('password', '');
+		this.login = 0;
+		localStorage.setItem('status', 0);
+		this.uid = "";
+		localStorage.setItem("uid", "");
+		
+		this.loginNow();
+	};
+	
 		
 	//图片路径转换
 	Model.prototype.toUrl = function(url){
@@ -173,7 +223,7 @@ define(function(require){
 		
 	};
 	
-	Model.prototype.loginNow = function(event){
+	Model.prototype.loginNow = function(){
 		var url = require.toUrl('./loginActivity.w');
 //		window.open(url);
 //		if (justep.Browser.isX5App && justep.Browser.isAndroid) {
@@ -181,6 +231,10 @@ define(function(require){
 //	    } else {
 //	        window.open(url, '_blank', 'toolbarposition=top,location=no,enableViewportScale=yes');
 //	    }
+		if (this.status == 1){
+			this.status = 0;
+			this.clearUser();
+		}
 	   justep.Shell.showPage(url);
 	};
 	
@@ -273,34 +327,8 @@ define(function(require){
 		return rtn;
 	}
 	
-	//调取登录用户信息
-	Model.prototype.loadUser = function(){
-
-		
-		if (this.username){
-//			alert("localStorage.getItem:username,value:" + localStorage.getItem('author'));
-//			this.comp("output_username").set({"value": this.username});
-			return this.username;
-		}else{
-			return "";
-		}
-	};
 	
-	//清除登录用户信息
-	Model.prototype.clearUser = function(event){
 
-		this.username = "";
-		localStorage.setItem('username', '');
-		this.password = "";
-		localStorage.setItem('password', '');
-		this.login = 0;
-		localStorage.setItem('login', 0);
-		this.uid = "";
-		localStorage.setItem("uid", "");
-		
-		this.loginNow(event);
-	};
-	
 	
 	//获取系统消息
 	Model.prototype.getMsg_sys = function(isApend){
@@ -317,7 +345,7 @@ define(function(require){
 	        data: {
 	        	"pageNo" : me.pageNo_msg_sys,
 	        	"uid" : me.uid,
-	        	"type" : "system"
+	        	"types" : "system"
 	        },
 	        success: function(resultData) {
 //	        	alert(resultData.result);
@@ -367,7 +395,7 @@ define(function(require){
 	        data: {
 	        	"pageNo" : me.pageNo_msg_com,
 	        	"uid" : me.uid,
-	        	"type" : "post"
+	        	"types" : "post"
 	        },
 	        success: function(resultData) {
 //	        	alert(resultData.result);
@@ -404,7 +432,7 @@ define(function(require){
 	
 	//获取atme消息
 	Model.prototype.getMsg_atme = function(isApend){
-	var me = this;
+		var me = this;
 		var data = this.comp("notify_atme");
 		
 		$.ajax({
@@ -416,8 +444,8 @@ define(function(require){
 	        jsonp: "CallBack",
 	        data: {
 	        	"pageNo" : me.pageNo_msg_atme,
-	        	"uid" : 86,
-	        	"type" : "follower"
+	        	"uid" : 28,
+	        	"types" : "follower,friend"
 	        },
 	        success: function(resultData) {
 //	        	alert(resultData.result);
@@ -430,7 +458,7 @@ define(function(require){
 	        	me.pageNo_msg_atme = pageNoObj;
 	        	me.pageCount_msg_atme = pageCountObj;
 //	        	alert(me.totalPage_study);
-//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+//	        	alert(notificationsObj + "/" + JSON.stringify(notificationsObj));
 	        	        	
 //	        	$.each(resultData,function(name,value) { 
 //	        		alert(name); 
@@ -501,6 +529,7 @@ define(function(require){
 	
 	//消息页下拉
 	Model.prototype.scrollView_msgPullDown = function(event){
+
 		if (this.show_msg_sys()){
 			this.pageNo_msg_sys = 1 ;
 			this.pageCount_msg_sys = 1;
@@ -533,6 +562,7 @@ define(function(require){
 		}
 	};
 	
+
 	
 	return Model;
 });
