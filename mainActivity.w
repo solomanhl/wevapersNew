@@ -3,7 +3,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="main" component="$UI/system/components/justep/window/window"
   design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;width:106px;top:120px;left:347px;"
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:120px;left:347px;width:148px;"
     onLoad="modelLoad" onunLoad="modelUnLoad"> 
     <div component="$UI/system/components/justep/shell/shell" xid="shell1"/> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="homeList" idColumn="tid"><column label="帖子id" name="fid" type="Integer" xid="xid1"></column>
@@ -56,7 +56,15 @@
   <column label="内容" name="note" type="String" xid="xid46"></column>
   </div>
   
-  </div>  
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data_forum_group" idColumn="fid"><column label="groupID" name="fid" type="Integer" xid="xid47"></column>
+  <column name="icon" type="String" xid="xid48"></column>
+  <column name="name" type="String" xid="xid49"></column>
+  <column name="fup" type="String" xid="xid50"></column>
+  <column label="帖子数量（含回帖）" name="posts" type="Integer" xid="xid51"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data_forum_forum" idColumn="fid"><column label="forumID" name="fid" type="Integer" xid="xid52"></column>
+  <column name="icon" type="String" xid="xid53"></column>
+  <column name="name" type="String" xid="xid54"></column>
+  <column label="上级groupID" name="fup" type="String" xid="xid55"></column>
+  <column label="帖子数量（含回帖)" name="posts" type="Integer" xid="xid56"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar header"
     xid="panel1"> 
     <div class="x-panel-top top1" xid="top1"> 
@@ -152,7 +160,24 @@
           </div> 
         </div>  
         <div class="x-contents-content x-cards content_forum" xid="content_forum"> 
-          </div>  
+          <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
+   <div class="x-panel-top" xid="top2"><div xid="div_group" align="center"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多..." xid="button_group" onClick="button_groupClick">
+   <i xid="i5"></i>
+   <span xid="span16">更多...</span></a></div></div>
+   <div class="x-panel-content" xid="content2" _xid="C739135DE7600001DAA3180E1C2C1E51" style="bottom: 0px; top: 0px;" supportpulldown="true"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_forum">
+   
+   <div class="x-scroll-content" xid="div14"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list_forum" data="data_forum_forum">
+   <ul class="x-list-template" xid="listTemplateUl3">
+    <li xid="li_forum" bind-click="li_forumClick"><div class="media" xid="media_forum" style="height:100%;">
+   <div class="media-left" xid="mediaLeft_forum">
+    <a href="#" xid="a5">
+     <img class="media-object" src="" alt="" xid="image_forum" bind-attr-src='$model.getIcon( val("icon"))'></img></a> </div> 
+   <div class="media-body" xid="mediaBody_forum">
+    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_forumName" bind-ref='ref("name")'></div>
+  
+  <div xid="div_forum_postNum"><label xid="label_forum_postNum"><![CDATA[帖子数量：]]></label><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_forum_postNum" bind-ref='ref("posts")'></div></div></div> </div></li></ul> </div></div>
+   </div></div>
+   </div></div>  
         <div class="x-contents-content  x-scroll-view content_msg" xid="content_msg" onActive="content_msgActive"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_msg" onPullDown="scrollView_msgPullDown" onPullUp="scrollView_msgPullUp">
    <div class="x-content-center x-pull-down container" xid="div9">
     <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i7"></i>
@@ -291,4 +316,8 @@
     <require xid="require1" url="css!$UI/wevapers/base"/>  
     <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"/> 
   </resource>
-</div>
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver_forum_group" anchor="titleBar1" opacity="0.2">
+   <div class="x-popOver-overlay" xid="div18"></div>
+   <div class="x-popOver-content" xid="div19"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list_group" data="data_forum_group">
+   <ul class="x-list-template" xid="listTemplateUl4">
+    <li xid="li_group" bind-click="li_groupClick"><label xid="label_group" bind-text='ref("name")'><![CDATA[]]></label></li></ul> </div></div></div></div>

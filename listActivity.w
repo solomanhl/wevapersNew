@@ -40,9 +40,9 @@
               <ins><img class="" src="" alt="" xid="image4" bind-attr-src=' $model.findThumbPicBytid("23") '></img></ins>
             </a> 
           </div>
-          <span component="$UI/system/components/justep/output/output" class="x-output dateTime" xid="output_time" bind-text='$model.dateTime( “dataline”))'></span>
-          <span component="$UI/system/components/justep/output/output" class="x-output author" xid="output_author" bind-text="“author”"></span>
-          <span component="$UI/system/components/justep/output/output" class="x-output views" xid="output_views" bind-text='"浏览" + “接口” + "次"'></span>
+          <span component="$UI/system/components/justep/output/output" class="x-output dateTime" xid="output_time"></span>
+          <span component="$UI/system/components/justep/output/output" class="x-output author" xid="output_author"></span>
+          <span component="$UI/system/components/justep/output/output" class="x-output views" xid="output_views"></span>
         </div> 
       </div>
   </li>

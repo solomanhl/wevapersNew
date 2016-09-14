@@ -43,6 +43,8 @@ define(function(require){
 		
 		justep.Shell.setIsSinglePage(true);
 		this.getHomeList(false);
+		this.getForum("data_forum_forum", "forum", 54);//database, type，fup，获取游记group下的论坛
+		this.getForum("data_forum_group", "group", 0);//database, type，fup，获取group
 	}
 	
 		
@@ -163,6 +165,46 @@ define(function(require){
 	    });
 	};
 	
+	//获取论坛group   forum
+	Model.prototype.getForum = function(database, type, fup){
+		var me = this;
+		var data = this.comp(database);
+		
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/ForumForumListServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"type" : type,
+	        	"fup" : fup
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.result);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+//	        	alert(me.totalPage_study);
+//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+		        json={"@type" : "table",database : {"idColumnName" : "tid","idColumnType" : "Integer", },"rows" :resultData };
+		        data.loadData(json, false);
+		        	
+//		        alert(data.count());
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
+	};
+	
 	//dateline转换
 	Model.prototype.datelineToBeforeDay = function(dateline){
 //		var mydate = new Date();//Tue Jul 26 2016 09:24:38 GMT+0800(中国标准时间)
@@ -240,9 +282,10 @@ define(function(require){
 	
 	//找论坛的icon
 	Model.prototype.getIcon = function(icon) {
-//		alert(fid);
+//		alert(icon);
 		var rtn;
 		rtn = this.imgserver + "/data/attachment/common/" + icon;
+//		alert(rtn);
 		if (rtn == "") {
 			rtn  = this.toUrl("./images/common_default.png" );
 		}
@@ -444,7 +487,7 @@ define(function(require){
 	        jsonp: "CallBack",
 	        data: {
 	        	"pageNo" : me.pageNo_msg_atme,
-	        	"uid" : 28,
+	        	"uid" : me.uid,
 	        	"types" : "follower,friend"
 	        },
 	        success: function(resultData) {
@@ -560,6 +603,39 @@ define(function(require){
 				this.getMsg_atme(true);	
 			}
 		}
+	};
+	
+
+	
+	Model.prototype.button_groupClick = function(event){
+		var popOver_forum_group = this.comp("popOver_forum_group");
+		popOver_forum_group.show();
+	};
+	
+
+	
+	Model.prototype.li_groupClick = function(event){
+		var current = event.bindingContext.$object;//获得当前行
+		var fup = current.val("fid");	//type=group的fid，就是forum的fup
+		this.getForum("data_forum_forum", "forum", fup);	//更新该分类下的论坛	
+		this.comp("popOver_forum_group").hide();
+	};
+	
+
+	//点论坛，跳转到论坛帖子列表
+	Model.prototype.li_forumClick = function(event){
+		var current = event.bindingContext.$object;//获得当前行
+		var url = require.toUrl("./listActivity.w");
+		var params = {
+	        from : "mainActivity",
+	        fid : current.val("fid"),
+	        name: current.val("name"),
+	        data : {
+	            // 将data中的一行数据传给对话框
+//	            data_forum : this.comp("pre_forum_forum").getCurrentRow().toJson()
+	        }
+	    };
+	    justep.Shell.showPage(url, params);
 	};
 	
 

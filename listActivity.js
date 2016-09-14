@@ -5,6 +5,7 @@ define(function(require){
 	var Model = function(){
 		this.callParent();
 		
+		this.server = "http://wevapers.gkybi.com.cn";
 		this.imgserver = "http://www.wevapers.com.cn";
 		
 		this.fid;
@@ -14,7 +15,7 @@ define(function(require){
 	Model.prototype.modelParamsReceive = function(event){
 		var context = this.getContext();
 		var me = this;
-		var data_forum = event.params.data.data_forum;
+//		var data_forum = event.params.data.data_forum;
 		this.fid = event.params.fid;
 		this.name = event.params.name;
 		
@@ -40,15 +41,11 @@ define(function(require){
 	}
 	
 	Model.prototype.dateTime = function(dateline){
-		var timestampPost = dateline * 1000; //帖子时间转成毫秒级
-		var time = new Date(timestampPost)//发帖标准时间
-		return time.toLocaleDateString();
+//		var timestampPost = dateline * 1000; //帖子时间转成毫秒级
+//		var time = new Date(timestampPost)//发帖标准时间
+//		return time.toLocaleDateString();
 	}
 	
-	//获取浏览数
-	Model.prototype.getViews = function (tid){
-		
-	}
 	
 	//图片路径转换
 	Model.prototype.toUrl = function(url){
