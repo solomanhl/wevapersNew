@@ -639,6 +639,22 @@ define(function(require){
 	};
 	
 
+	//忘记密码
+	Model.prototype.div_xiugaiClick = function(event){
+		var url = require.toUrl("./chagePassActivity.w");
+		var params = {
+	        from : "mainActivity",
+	        fid : this.uid,
+	        name: this.username,
+	        data : {
+	            // 将data中的一行数据传给对话框
+//	            data_forum : this.comp("pre_forum_forum").getCurrentRow().toJson()
+	        }
+	    };
+	    justep.Shell.showPage(url, params);
+	};
+	
+
 	
 	return Model;
 });

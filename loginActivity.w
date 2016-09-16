@@ -23,7 +23,7 @@
     <div xid="div7" align="center" class="tip">
       <label xid="label_foget"><![CDATA[忘记密码]]></label>  
       <!-- <img src="$UI/wevapers/images/login_line.png" alt="" xid="image5"/> -->
-      <label xid="label_reg"><![CDATA[立即注册]]></label> 
+      <label xid="label_reg" bind-click="label_regClick"><![CDATA[立即注册]]></label> 
     </div>
     <div xid="div3" align="center" class="software">
       <img src="$UI/wevapers/images/login_icon1.png" alt="" xid="image_wechat"/>  

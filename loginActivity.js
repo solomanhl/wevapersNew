@@ -112,6 +112,20 @@ define(function(require){
 	};
 
 
+	//注册账号
+	Model.prototype.label_regClick = function(event){
+		var url = require.toUrl("./regActivity.w");
+		var params = {
+	        from : "loginActivity",
+	        data : {
+	            // 将data中的一行数据传给对话框
+//	            data_forum : this.comp("pre_forum_forum").getCurrentRow().toJson()
+	        }
+	    };
+	    justep.Shell.showPage(url, params);
+	};
+
+
 
 	return Model;
 });

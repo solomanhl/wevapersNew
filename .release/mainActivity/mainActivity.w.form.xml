@@ -6,7 +6,7 @@
   <div component="$model/UI2/system/components/justep/model/model" xid="model" style="display:none" data-bind="component:{name:'$model/UI2/system/components/justep/model/model'}" data-events="onunLoad:modelUnLoad;onLoad:modelLoad" __cid="cUBbQny" class="cUBbQny"> 
     <div component="$model/UI2/system/components/justep/shell/shell" xid="shell1" style="display:none" data-bind="component:{name:'$model/UI2/system/components/justep/shell/shell'}" __cid="cUBbQny" class="cUBbQny"/> 
   </div>  
-  <div component="$model/UI2/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar header p385ca80187bb415b8d4066476ded24f7-iosstatusbar cUBbQny" xid="panel1" data-bind="component:{name:'$model/UI2/system/components/justep/panel/panel'}" __cid="cUBbQny"> 
+  <div component="$model/UI2/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar header pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar cUBbQny" xid="panel1" data-bind="component:{name:'$model/UI2/system/components/justep/panel/panel'}" __cid="cUBbQny"> 
     <div class="x-panel-top top1 cUBbQny" xid="top1" component="$model/UI2/system/components/justep/panel/child" data-bind="component:{name:'$model/UI2/system/components/justep/panel/child'}" __cid="cUBbQny"> 
       <div component="$model/UI2/system/components/justep/titleBar/titleBar" class="x-titlebar cUBbQny" xid="titleBar1" style="background-color:#21b589;" data-bind="component:{name:'$model/UI2/system/components/justep/titleBar/titleBar'}" data-config="{&quot;title&quot;:&quot;Wevapers&quot;}" __cid="cUBbQny"> 
         <div class="x-titlebar-left cUBbQny" xid="left1" __cid="cUBbQny"/>  
@@ -91,7 +91,7 @@
           </div> 
         </div>  
         <div class="x-contents-content x-cards content_forum cUBbQny" xid="content_forum" component="$model/UI2/system/components/justep/contents/content" data-bind="component:{name:'$model/UI2/system/components/justep/contents/content'}" __cid="cUBbQny"> 
-          <div component="$model/UI2/system/components/justep/panel/panel" class="x-panel x-full paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar cUBbQny" xid="panel2" data-bind="component:{name:'$model/UI2/system/components/justep/panel/panel'}" __cid="cUBbQny"> 
+          <div component="$model/UI2/system/components/justep/panel/panel" class="x-panel x-full p5e4b5edf300244abb256562fac49e2c7-iosstatusbar cUBbQny" xid="panel2" data-bind="component:{name:'$model/UI2/system/components/justep/panel/panel'}" __cid="cUBbQny"> 
             <div class="x-panel-top cUBbQny" xid="top2" component="$model/UI2/system/components/justep/panel/child" data-bind="component:{name:'$model/UI2/system/components/justep/panel/child'}" __cid="cUBbQny">
               <div xid="div_group" align="center" __cid="cUBbQny" class="cUBbQny">
                 <a component="$model/UI2/system/components/justep/button/button" class="btn btn-default cUBbQny" xid="button_group" data-bind="component:{name:'$model/UI2/system/components/justep/button/button'}" data-events="onClick:button_groupClick" data-config="{&quot;label&quot;:&quot;更多...&quot;}" __cid="cUBbQny"> 
@@ -126,7 +126,7 @@
                 </div> 
               </div>
             </div>  
-            <style __cid="cUBbQny" class="cUBbQny">.x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-top {height: 48px;}.x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-content { top: 48px;bottom: nullpx;}.x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-bottom {height: nullpx;}.iosstatusbar .x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-top,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-top {height: 68px;}.iosstatusbar .x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-content,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-content { top: 68px;}.iosstatusbar .x-panel .x-panel-content .x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-top {height: 48px;}.iosstatusbar .x-panel .x-panel-content .x-panel.paa89248ca60d4f8bba7b5b2c7a5c8448-iosstatusbar &gt;.x-panel-content {top: 48px;}</style>
+            <style __cid="cUBbQny" class="cUBbQny">.x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-top {height: 48px;}.x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-content { top: 48px;bottom: nullpx;}.x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-bottom {height: nullpx;}.iosstatusbar .x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-top,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-top {height: 68px;}.iosstatusbar .x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-content,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-content { top: 68px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-top {height: 48px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p5e4b5edf300244abb256562fac49e2c7-iosstatusbar &gt;.x-panel-content {top: 48px;}</style>
           </div>
         </div>  
         <div class="x-contents-content  x-scroll-view content_msg cUBbQny" xid="content_msg" component="$model/UI2/system/components/justep/contents/content" data-bind="component:{name:'$model/UI2/system/components/justep/contents/content'}" data-events="onActive:content_msgActive" __cid="cUBbQny">
@@ -237,7 +237,7 @@
               <span xid="span8" __cid="cUBbQny" class="cUBbQny">我的资料</span> 
             </a> 
           </div>  
-          <div xid="div_xiugai" class="change list_same cUBbQny" __cid="cUBbQny"> 
+          <div xid="div_xiugai" class="change list_same cUBbQny" bind-click="div_xiugaiClick" __cid="cUBbQny"> 
             <ins class="icon cUBbQny" __cid="cUBbQny">
               <img src="" alt="" xid="image13" bind-attr-src="$model.toUrl(&quot;./images/user_icon4.gif&quot;)" __cid="cUBbQny" class="cUBbQny"/>
             </ins>  
@@ -297,7 +297,7 @@
         </a> 
       </div> 
     </div>  
-    <style __cid="cUBbQny" class="cUBbQny">.x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-top {height: 48px;}.x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-content { top: 48px;bottom: nullpx;}.x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-bottom {height: nullpx;}.iosstatusbar .x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-top,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-top {height: 68px;}.iosstatusbar .x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-content,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-content { top: 68px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-top {height: 48px;}.iosstatusbar .x-panel .x-panel-content .x-panel.p385ca80187bb415b8d4066476ded24f7-iosstatusbar &gt;.x-panel-content {top: 48px;}</style>
+    <style __cid="cUBbQny" class="cUBbQny">.x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-top {height: 48px;}.x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-content { top: 48px;bottom: nullpx;}.x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-bottom {height: nullpx;}.iosstatusbar .x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-top,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-top {height: 68px;}.iosstatusbar .x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-content,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-content { top: 68px;}.iosstatusbar .x-panel .x-panel-content .x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-top {height: 48px;}.iosstatusbar .x-panel .x-panel-content .x-panel.pb673e0c1869645f8a5b4138aa7402da2-iosstatusbar &gt;.x-panel-content {top: 48px;}</style>
   </div>  
   <div component="$model/UI2/system/components/justep/popOver/popOver" class="x-popOver cUBbQny" xid="popOver_forum_group" data-bind="component:{name:'$model/UI2/system/components/justep/popOver/popOver'}" data-config="{&quot;anchor&quot;:&quot;titleBar1&quot;,&quot;direction&quot;:&quot;auto&quot;,&quot;opacity&quot;:0.2}" __cid="cUBbQny"> 
     <div class="x-popOver-overlay cUBbQny" xid="div18" __cid="cUBbQny"/>  

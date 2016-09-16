@@ -17,7 +17,7 @@
     </div>  
     <div xid="div7" align="center" class="tip cqq2UBv" __cid="cqq2UBv"> 
       <label xid="label_foget" __cid="cqq2UBv" class="cqq2UBv">忘记密码</label>  
-      <label xid="label_reg" __cid="cqq2UBv" class="cqq2UBv">立即注册</label> 
+      <label xid="label_reg" bind-click="label_regClick" __cid="cqq2UBv" class="cqq2UBv">立即注册</label> 
     </div>  
     <div xid="div3" align="center" class="software cqq2UBv" __cid="cqq2UBv"> 
       <img src="$model/UI2/wevapers/images/login_icon1.png" alt="" xid="image_wechat" __cid="cqq2UBv" class="cqq2UBv"/>  

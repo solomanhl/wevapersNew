@@ -262,7 +262,7 @@
               <span xid="span8">我的资料</span>
             </a>
           </div>  
-          <div xid="div_xiugai" class="change list_same">
+          <div xid="div_xiugai" class="change list_same" bind-click="div_xiugaiClick">
             <ins class="icon"><img src="" alt="" xid="image13" bind-attr-src="$model.toUrl(&quot;./images/user_icon4.gif&quot;)"/></ins>  
             <label xid="label6"><![CDATA[忘记密码]]></label>  
             <ins class="arrow"><img src="" alt="" xid="image14"  bind-attr-src=" $model.toUrl(&quot;./images/arrow2.png&quot;)"/></ins>            
