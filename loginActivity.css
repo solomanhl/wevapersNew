@@ -17,7 +17,7 @@
     position: absolute;
     top: 1.6rem;
     left: 1.6rem;
-    width: 2.6rem;
+    width: 2rem;
     opacity: 0.85;
 }
 
@@ -26,25 +26,25 @@
 }
 
 .wrapper .logo{
-    margin-top:20%;
+    margin-top:18%;
 }
 
 .wrapper .logo img{
-    width: 64%;
+    width: 62%;
     height: auto;
-    margin-bottom: 7%;
+    margin-bottom: 8%;
 }
 
 .wrapper .logo input{
     border: 1px solid #fff;
-    border-radius: 3rem;
+    border-radius: 4rem;
     width: 88%;
     background: none;
     padding: 0.85rem 0;
     text-align: center;
-    margin-bottom: 1.3rem;
-    font-size:1.6rem;  
-    color: #fff  
+    margin-bottom: 1.2rem;
+    font-size:1.3rem;  
+    color: #fff;
 }
 
 .wrapper .logo input::-ms-input-placeholder{
@@ -71,7 +71,7 @@ input::-webkit-input-placeholder{text-align: center;}
     padding: 0.85rem 0;
     text-align: center;
     margin-bottom: 1rem;
-    font-size:1.6rem;  
+    font-size:1.3rem;  
     color: #fff;
 }
 
@@ -79,13 +79,13 @@ input::-webkit-input-placeholder{text-align: center;}
     height: 2rem;
     background: url(./images/login_line.png) no-repeat center center;
     line-height: 2rem;
-    background-size: 1px 2rem;
+    background-size: 1px 1.6rem;
 }
 
 .wrapper .tip label{
     color: #fff;
     margin: 0 2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: normal;
     
 }

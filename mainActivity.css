@@ -25,23 +25,28 @@
 .tb-listBox p{ font-size:13px; margin-top:5px;}
 */
 
-
 .x-cards{padding: 0}
-.content_forum{overflow: hidden;background: #fff;overflow: hidden;}
-.content_forum .tb-box.cvIRRVf > .col.cvIRRVf:first-child { padding-right: 0;}
-.content_forum .col3{padding: 0;}
-.content_forum .col3 ul{background: #f5f5f5;margin: 0;}
-.content_forum .col3 ul li{height:6.6rem;line-height:6.6rem;border: none;padding: 0;background: #f5f5f5;margin: 0;overflow: hidden;}
-.content_forum .col3 ul li h5{height: 6.6rem;line-height:6.6rem;font-size: 1.32rem;text-align: center;padding: 0;color: #444;border-bottom: 1px solid #d7d7d7;}
-.content_forum .col4{padding:0 0 0 1rem;background: #fff;overflow: auto;}
-.content_forum .col4 ul li{background: #fff;padding-left: 1.5rem;height: 7.2rem;padding: 0;overflow: hidden;border: none;margin: 0}
-.content_forum .col4 ul li .media{padding:1rem 0;width: 100%;overflow: hidden;height: 7.2rem;border-bottom: 1px solid #d7d7d7;}
-.content_forum .col4 ul li .media .media-left{width: 35%;height: 5.2rem;padding: 0.5rem 5% 0.5rem 0;display: table-cell;}
-.content_forum .col4 ul li .media .media-left img{border-radius: 100%;padding: 0;height:auto;vertical-align: middle;width:100%;}
-.content_forum .col4 ul li .media .media-body{height: 5.2rem;padding: 0.5rem 0}
-.content_forum .col4 ul li .media .media-body .x-output{padding: 0;}
-.content_forum .col4 ul li .media .media-body .title{padding: 0;height: 2.7rem;line-height: 2.5rem;font-size: 1.2rem;width: 100%;overflow: hidden;}
-.content_forum .col4 ul li .media .media-body .mark{height: 1.5rem;line-height: 1.5rem;width: 100%;overflow: hidden;font-size: 1rem;color: #959595;padding: 0;background: none}
+.content_forum{overflow: hidden;background: #f6f6f6;overflow: hidden;}
+.content_forum .more_plate{z-index: 999;height: auto;margin-bottom: 10px;position: absolute;top:0;left: 0;}
+.content_forum .more_btn{height:auto;overflow: hidden;background: #fff;border-bottom:1px solid #ededed; }
+.content_forum .more_btn a{text-align: center;padding:0;color: #444;border:none;display: block;width: auto;height: 3.2rem;line-height: 3.2rem;background: none}
+.content_forum .more_btn a img{width: 1rem}
+.content_forum .plate_box{overflow: hidden;}
+.content_forum .plate_box li{padding-left:3%;height: 6rem;overflow: hidden;border: none;margin: 0;background:#fff url(./images/arrow.gif) no-repeat 96% center;background-size: 0.8rem auto;border-bottom: 1px solid #ededed;}
+.content_forum .plate_box li .media{padding: 1rem 0;overflow: hidden;}
+.content_forum .plate_box li .media .media-left{width: 4rem;height: 4rem;}
+.content_forum .plate_box li .media .media-left a{width: 4rem;height: 4rem;border-radius: 100%;line-height: 4rem;display: table-cell;overflow: hidden;}
+.content_forum .plate_box li .media .media-left img{width: 4rem;height: 4rem;}
+.content_forum .plate_box li .media .media-body{padding: 0.3rem 0;overflow: hidden;height: 3rem;}
+.content_forum .plate_box li .media .media-body .title{font-size: 1.2rem;margin-bottom: 0.3rem;padding: 0;}
+.content_forum .plate_box li .media .media-body .tip{font-size: 1rem;padding: 0;color: #959595}
+.content_forum .plate_box li .media .media-body .tip label{width: auto;font-weight: normal;font-size: 1rem;}
+.content_forum .plate_box li .media .media-body .tip .num{color: #9e7000;}
+
+.x-popOver-content{padding: 16px 3% 30px;width: 100%;background: #fff;overflow: hidden;}
+.x-popOver li{margin: 0 1% 10px;float: left;text-align: center;line-height: 1.4rem;border:1px solid #21b589;border-radius: 5px;color: #21b589;padding:7px 10px;}
+.x-popOver li label{font-weight: normal;font-size: 1.1rem}
+.x-popOver li:hover{background: #21b589;color: #fff}
 
 /*社区主界面样式*/
 

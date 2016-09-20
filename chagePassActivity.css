@@ -1,0 +1,14 @@
+.changePass .x-titlebar{background: #21b589;}
+.changePass .x-titlebar-title{font-weight: normal;}
+
+/*标题栏*/
+
+.changePass .x-panel-content{background: #f6f6f6;padding-top:1rem;}
+.changePass .x-panel-content .edit_box{background: #fff;border-bottom: 1px solid #ededed;border-top: 1px solid #ededed;padding-left: 3%;margin-bottom: 3rem;}
+.changePass .x-panel-content .edit_box input{border:none;border-bottom: 1px solid #ededed;padding:1rem 0;font-size: 1.2rem;font-family: 微软雅黑;display: block;height: auto;outline:none;}
+.changePass .x-panel-content .edit_box input:last-child{border:none;}
+.changePass .x-panel-content .btn{width: 94%;background: #29cf9e;border:1px solid #21b589;font-size: 1.4rem;margin:0 auto;padding: 0.6rem 0;display: block;}
+.changePass .x-panel-content .btn span{font-size: 1.2rem;}
+.changePass .x-panel-content .btn:hover{background: #21b589}
+
+/*主要内容*/

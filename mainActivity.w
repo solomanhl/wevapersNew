@@ -159,26 +159,27 @@
             </div> 
           </div> 
         </div>  
-        <div class="x-contents-content x-cards content_forum" xid="content_forum"> 
-          <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
-   <div class="x-panel-top" xid="top2"><div xid="div_group" align="center"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多..." xid="button_group" onClick="button_groupClick">
-   <i xid="i5"></i>
-   <span xid="span16">更多...</span></a></div></div>
-   <div class="x-panel-content" xid="content2" _xid="C739135DE7600001DAA3180E1C2C1E51" style="bottom: 0px; top: 0px;" supportpulldown="true"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_forum">
+ <div class="x-contents-content x-cards content_forum" xid="content_forum"> 
+    <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
+   <div class="x-panel-top more_plate" xid="top2"><div xid="div_group" align="center" class="more_btn"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" xid="button_group" onClick="button_groupClick">
+   <span xid="span16">更多</span>
+    <img src="images/arrow4.png" alt="" /> 
+  </a></div></div>
+   <div class="x-panel-content plate_box" xid="content2" _xid="C739135DE7600001DAA3180E1C2C1E51"  supportpulldown="true"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_forum">
    
    <div class="x-scroll-content" xid="div14"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list_forum" data="data_forum_forum">
    <ul class="x-list-template" xid="listTemplateUl3">
-    <li xid="li_forum" bind-click="li_forumClick"><div class="media" xid="media_forum" style="height:100%;">
+    <li xid="li_forum" bind-click="li_forumClick"><div class="media" xid="media_forum">
    <div class="media-left" xid="mediaLeft_forum">
     <a href="#" xid="a5">
      <img class="media-object" src="" alt="" xid="image_forum" bind-attr-src='$model.getIcon( val("icon"))'></img></a> </div> 
    <div class="media-body" xid="mediaBody_forum">
-    <div component="$UI/system/components/justep/output/output" class="x-output" xid="output_forumName" bind-ref='ref("name")'></div>
+    <div component="$UI/system/components/justep/output/output" class="x-output title" xid="output_forumName" bind-ref='ref("name")'></div>
   
-  <div xid="div_forum_postNum"><label xid="label_forum_postNum"><![CDATA[帖子数量：]]></label><div component="$UI/system/components/justep/output/output" class="x-output" xid="output_forum_postNum" bind-ref='ref("posts")'></div></div></div> </div></li></ul> </div></div>
+  <div xid="div_forum_postNum" class="tip"><label xid="label_forum_postNum"><![CDATA[帖子数量：]]></label><div component="$UI/system/components/justep/output/output" class="x-output num" xid="output_forum_postNum" bind-ref='ref("posts")'></div></div></div> </div></li></ul> </div></div>
    </div></div>
    </div></div>  
-        <div class="x-contents-content  x-scroll-view content_msg" xid="content_msg" onActive="content_msgActive"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_msg" onPullDown="scrollView_msgPullDown" onPullUp="scrollView_msgPullUp">
+   <div class="x-contents-content  x-scroll-view content_msg" xid="content_msg" onActive="content_msgActive"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_msg" onPullDown="scrollView_msgPullDown" onPullUp="scrollView_msgPullUp">
    <div class="x-content-center x-pull-down container" xid="div9">
     <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i7"></i>
     <span class="x-pull-down-label" xid="span11">下拉刷新...</span></div> 
@@ -264,10 +265,10 @@
           </div>  
           <div xid="div_xiugai" class="change list_same" bind-click="div_xiugaiClick">
             <ins class="icon"><img src="" alt="" xid="image13" bind-attr-src="$model.toUrl(&quot;./images/user_icon4.gif&quot;)"/></ins>  
-            <label xid="label6"><![CDATA[忘记密码]]></label>  
+            <label xid="label6"><![CDATA[修改密码]]></label>  
             <ins class="arrow"><img src="" alt="" xid="image14"  bind-attr-src=" $model.toUrl(&quot;./images/arrow2.png&quot;)"/></ins>            
           </div>  
-          <div xid="div_fenxiang" class="list_same">
+          <div xid="div_fenxiang" class="list_same" bind-click="div_fenxiangClick">
             <ins class="icon"><img src="" alt="" xid="image15" bind-attr-src=" $model.toUrl(&quot;./images/user_icon5.gif&quot;)"/></ins>
             <label xid="label7"><![CDATA[分享Wevapers]]></label>  
             <ins class="arrow"><img src="" alt="" xid="image16" bind-attr-src=" $model.toUrl(&quot;./images/arrow2.png&quot;)"/></ins>

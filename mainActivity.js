@@ -2,6 +2,10 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	
+	require("$UI/system/lib/cordova/cordova");
+	require("cordova!cordova-plugin-x-toast");
+	require("cordova!cordova-plugin-x-socialsharing");
+	
 	
 	var Model = function(){
 		this.callParent();
@@ -639,19 +643,40 @@ define(function(require){
 	};
 	
 
-	//忘记密码
+	//修改密码
 	Model.prototype.div_xiugaiClick = function(event){
-		var url = require.toUrl("./chagePassActivity.w");
-		var params = {
-	        from : "mainActivity",
-	        fid : this.uid,
-	        name: this.username,
-	        data : {
-	            // 将data中的一行数据传给对话框
-//	            data_forum : this.comp("pre_forum_forum").getCurrentRow().toJson()
-	        }
-	    };
-	    justep.Shell.showPage(url, params);
+		if (this.status == 1){
+			var url = require.toUrl("./chagePassActivity.w");
+			var params = {
+		        from : "mainActivity",
+		        uid : this.uid,
+		        name: this.username,
+		        password : this.password,
+		        data : {
+		            // 将data中的一行数据传给对话框
+	//	            data_forum : this.comp("pre_forum_forum").getCurrentRow().toJson()
+		        }
+		    };
+		    justep.Shell.showPage(url, params);
+		}else {
+			if (justep.Browser.isX5App){
+				window.plugins.toast.show("请先登录", "long", "center");
+			}
+		}
+		
+	};
+	
+
+	//分享wevapers，通用分享
+	Model.prototype.div_fenxiangClick = function(event){
+		if (justep.Browser.isX5App){
+			var url = window.location.href;
+	        plugins.socialsharing.share("Wevapers，万人迷的游记。Million people in the travel notes.\r\nwww.wevapers.com", 
+	        		"Wevapers", 
+	        		toUrl("./images/logo.png"), 
+	        		url);
+		}
+		
 	};
 	
 

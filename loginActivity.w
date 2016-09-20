@@ -12,7 +12,7 @@
       <img alt="" xid="image_logo" align="middle" src="$UI/wevapers/images/login_logo.png"/>
       <input component="$UI/system/components/justep/input/input" class=""
         xid="input_username" placeHolder="用户名" valueUpdateMode="input" style="color:#FFFFFF;"/>
-      <input component="$UI/system/components/justep/input/password" class=""
+      <input component="$UI/system/components/justep/input/password" class="pass"
         xid="password1" placeHolder="密码"/>
       <a component="$UI/system/components/justep/button/button" class="btn btn-default"
         label="登录" xid="button_login" onClick="button_loginClick"> 
@@ -21,7 +21,7 @@
       </a> 
     </div>  
     <div xid="div7" align="center" class="tip">
-      <label xid="label_foget"><![CDATA[忘记密码]]></label>  
+      <label xid="label_foget" bind-click="label_fogetClick"><![CDATA[忘记密码]]></label>  
       <!-- <img src="$UI/wevapers/images/login_line.png" alt="" xid="image5"/> -->
       <label xid="label_reg" bind-click="label_regClick"><![CDATA[立即注册]]></label> 
     </div>
