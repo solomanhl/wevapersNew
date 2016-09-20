@@ -11,6 +11,7 @@ define(function(require){
 		this.pre_forum_thread;
 //		this.post;
 		
+		this.fid;
 		this.tid;
 		this.message;
 		
@@ -63,6 +64,7 @@ define(function(require){
 	    
 	    this.subject = post.val("subject");
 	    this.author = post.val("author");
+	    this.fid = post.val("fid");
 	    this.tid = post.val("tid");
 		this.views = post.val("views");
 		this.replies = post.val("replies");
@@ -224,6 +226,19 @@ define(function(require){
 			this.pageNo ++;
 			this.getReplies(this.tid, true);
 		}
+	};
+
+	
+	Model.prototype.modelUnLoad = function(event){
+//		setTimeout(function(){
+			justep.Shell.fireEvent("onRefreshList", {"fid" : this.fid});
+//		},5);
+	};
+
+	
+	//分享
+	Model.prototype.image_shareClick = function(event){
+		this.comp("popOver_share").show();
 	};
 
 	

@@ -256,7 +256,7 @@ define(function(require){
 	
 	//找附件图片
 	Model.prototype.findThumbPicBytid = function(attachment){
-		var rtn = this.toUrl("./images/forum_default.jpg1" );
+		var rtn = this.toUrl("./images/default_img.png" );
 		if (attachment !="" && attachment!= null){
 			rtn = this.imgserver + "/data/attachment/forum/" + attachment;
 		}
@@ -290,8 +290,8 @@ define(function(require){
 		var rtn;
 		rtn = this.imgserver + "/data/attachment/common/" + icon;
 //		alert(rtn);
-		if (rtn == "") {
-			rtn  = this.toUrl("./images/common_default.png" );
+		if (icon == "") {
+			rtn  = this.toUrl("./images/logo.png" );
 		}
 		return rtn;
 	}
@@ -670,10 +670,10 @@ define(function(require){
 	//分享wevapers，通用分享
 	Model.prototype.div_fenxiangClick = function(event){
 		if (justep.Browser.isX5App){
-			var url = window.location.href;
-	        plugins.socialsharing.share("Wevapers，万人迷的游记。Million people in the travel notes.\r\nwww.wevapers.com", 
+//			var url = window.location.href;
+			var url = "http://59.173.242.10000/wevapers/index.html";
+	        plugins.socialsharing.share("Wevapers，万人迷的游记。Million people in the travel notes.\r\nwww.wevapers.com\r\n", 
 	        		"Wevapers", 
-	        		toUrl("./images/logo.png"), 
 	        		url);
 		}
 		

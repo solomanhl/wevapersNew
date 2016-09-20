@@ -243,7 +243,7 @@
             </a>
           </div>
           <div component="$UI/system/components/justep/button/buttonGroup"
-            class="btn-group x-card btn-group-justified nav_group" tabbed="true" xid="buttonGroup1">
+            class="btn-group x-card btn-group-justified nav_group" tabbed="true" xid="buttonGroup1" bind-visible="false">
             <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-top"
               label="我的收藏" xid="button_shoucang" icon="img:$UI/wevapers/images/user_icon1.gif|"> 
               <i xid="i2"/>  
@@ -283,7 +283,7 @@
             <label xid="label9"><![CDATA[检查更新]]></label>
             <ins class="arrow"><img src="" alt="" xid="image20" bind-attr-src=" $model.toUrl(&quot;./images/arrow2.png&quot;)"/> </ins>
           </div>  
-          <div xid="div_exit" class="exit">
+          <div xid="div_exit" class="exit" bind-visible="false">
             <a component="$UI/system/components/justep/button/button" class="btn btn-default"
               label="退出当前账号" xid="button_exit" onClick="clearUser" style="height:100%;" bind-visible=" $model.getLoginState()"> 
               <span xid="span9">退出当前账号</span>

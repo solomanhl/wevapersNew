@@ -5,12 +5,13 @@ require('$model/UI2/system/components/justep/button/button');
 require('$model/UI2/system/components/justep/scrollView/scrollView');
 require('$model/UI2/system/components/justep/input/input');
 require('$model/UI2/system/components/justep/list/list');
+require('$model/UI2/system/components/justep/panel/child');
+require('$model/UI2/system/components/justep/panel/panel');
+require('$model/UI2/system/components/justep/popOver/popOver');
 require('$model/UI2/system/components/justep/output/output');
 require('$model/UI2/system/components/justep/titleBar/titleBar');
-require('$model/UI2/system/components/justep/panel/child');
 require('$model/UI2/system/components/justep/data/data');
 require('$model/UI2/system/components/justep/window/window');
-require('$model/UI2/system/components/justep/panel/panel');
 var __parent1=require('$model/UI2/system/lib/base/modelBase'); 
 var __parent0=require('$model/UI2/wevapersNew/detailActivity'); 
 var __result = __parent1._extend(__parent0).extend({

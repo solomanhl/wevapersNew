@@ -63,6 +63,9 @@
 .x-panel-bottom .buttonGroup a:nth-child(3) .this{background:#f5f5f5 url(./images/nav_icon7.png) no-repeat center top;background-size:20px;}
 .x-panel-bottom .buttonGroup a:nth-child(4) .this{background:#f5f5f5 url(./images/nav_icon8.png) no-repeat center top;background-size:20px;}
 
+/*个人页面*/
+.content_me .userinfo .media-body .x-output{color: #fff;}
+
 /*底部导航*/
 
 .header .top1 .x-titlebar-title{text-align: center}
@@ -125,4 +128,4 @@
 .content_me .exit{background: #fff;border-bottom: 1px solid #ededed;border-top: 1px solid #ededed;height: 4.6rem;padding: 0.8rem 3%;overflow: hidden;}
 .content_me .exit a{display: block;text-align: center;height: 3rem;line-height: 3rem;font-size: 1.3rem;color: #d8271c;width: 100%;background: #fff;padding: 0;border:none;}
 
-/*我的主界面
+/*我的主界面*/

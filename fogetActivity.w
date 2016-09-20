@@ -22,8 +22,8 @@
       </div>  
     <div class="x-panel-content" xid="content1"><div xid="div1"><input component="$UI/system/components/justep/input/input" class="form-control" xid="input_username" placeHolder="请输入用户名"></input>
   <input component="$UI/system/components/justep/input/input" class="form-control" xid="input_email" placeHolder="请输入注册时的邮箱"></input></div>
-  <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="确认" xid="button_submit" onClick="button_submitClick">
+  <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="下一步" xid="button_submit" onClick="button_submitClick">
    <i xid="i1"></i>
-   <span xid="span1">确认</span></a></div>
+   <span xid="span1">下一步</span></a></div>
   </div> 
 </div>

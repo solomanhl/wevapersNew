@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="width:229px;height:auto;top:186px;left:391px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="width:229px;height:auto;top:186px;left:391px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive" onunLoad="modelUnLoad"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="post" idColumn="tid"><column label="帖子id" name="fid" type="Integer" xid="xid1"></column>
   <column label="作者" name="author" type="String" xid="xid2"></column>
   <column label="回复数量" name="replies" type="Integer" xid="xid3"></column>
@@ -40,7 +40,7 @@
           </div>  
           <div class="x-titlebar-title">详情</div>  
           <div class="x-titlebar-right reverse"> 
-          <img alt="" xid="image_share" bind-attr-src='$model.toUrl("./images/share3.png")'></img></div>
+          <img alt="" xid="image_share" bind-attr-src='$model.toUrl("./images/share3.png")' bind-click="image_shareClick"></img></div>
         </div> 
       </div>  
     <div class="x-panel-content  x-scroll-view" xid="content1" _xid="C7284A94D7E00001EE921BD0EF207B00" style="bottom: 0px;">
@@ -82,4 +82,6 @@
     <require xid="require1" url="css!$UI/wevapers/base"/>  
     <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"/> 
   </resource>
-</div>
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver_share" opacity="0.2" anchor="top1" style="width:100%;">
+   <div class="x-popOver-overlay" xid="div8"></div>
+   <div class="x-popOver-content" xid="div9"><iframe src="./share.w" xid="iframe_share" width="100%"></iframe></div></div></div>
