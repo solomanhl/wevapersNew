@@ -1,0 +1,12 @@
+.share_page{background: #e8e8e8;}
+.share_page ul{border-bottom: 1px solid #c7c7c7;white-space:nowrap;background: #e8e8e8;padding:2.5rem 3%;width: 100%;overflow: hidden;}
+.share_page ul li{text-align: center;display: inline-block;width:18.8%;}
+.share_page ul li img{margin-bottom: 5px;width: 80%;height: auto;}
+.share_page ul li span{display: block;text-align: center;color: #333;font-size: 1.1rem;}
+.share_page .share2{border-bottom: none;}
+.share_page .cancel{height: 4rem;text-align: center;background: #fff;line-height: 4rem;}
+.share_page .cancel a{font-size: 1.4rem;display: block;}
+
+
+
+

@@ -41,7 +41,7 @@
 .content_forum .plate_box li .media .media-body .title{font-size: 1.2rem;margin-bottom: 0.3rem;padding: 0;}
 .content_forum .plate_box li .media .media-body .tip{font-size: 1rem;padding: 0;color: #959595}
 .content_forum .plate_box li .media .media-body .tip label{width: auto;font-weight: normal;font-size: 1rem;}
-.content_forum .plate_box li .media .media-body .tip .num{color: #9e7000;}
+.content_forum .plate_box li .media .media-body .tip .num{color: #9e7000;display: inline-block;padding:0;font-size: 1rem}
 
 .x-popOver-content{padding: 16px 3% 30px;width: 100%;background: #fff;overflow: hidden;}
 .x-popOver li{margin: 0 1% 10px;float: left;text-align: center;line-height: 1.4rem;border:1px solid #21b589;border-radius: 5px;color: #21b589;padding:7px 10px;}
@@ -50,9 +50,9 @@
 
 /*社区主界面样式*/
 
-.x-panel-bottom .buttonGroup{height: 48px;padding: 5px 0;border-top: 1px solid #cececf;background: #f5f5f5}
-.x-panel-bottom .buttonGroup a{height: 38px;display: block;float: left;width: 25%;}
-.x-panel-bottom .buttonGroup a span{background:#f5f5f5 url(./images/nav_icon1.png) no-repeat center top;background-size:20px;padding-top:22px;display:block;height:38px;width:100%;overflow:hidden;text-align:center;color:#959595;font-size:12px}
+.x-panel-bottom .btn-group{height: 48px;border-top: 1px solid #cececf;background: #f5f5f5}
+.x-panel-bottom .btn-group a{height: 48px;display:block;;width: 25%;float: left;border:none;}
+/*.x-panel-bottom .buttonGroup a span{background:#f5f5f5 url(./images/nav_icon1.png) no-repeat center top;background-size:20px;padding-top:22px;display:block;height:38px;width:100%;overflow:hidden;text-align:center;color:#959595;font-size:12px}
 .x-panel-bottom .buttonGroup a .this{color: #21b589}
 .x-panel-bottom .buttonGroup a:nth-child(1) span{background:#f5f5f5 url(./images/nav_icon1.png) no-repeat center top;background-size:20px;}
 .x-panel-bottom .buttonGroup a:nth-child(2) span{background:#f5f5f5 url(./images/nav_icon2.png) no-repeat center top;background-size:20px;}
@@ -61,9 +61,12 @@
 .x-panel-bottom .buttonGroup a:nth-child(1) .this{background:#f5f5f5 url(./images/nav_icon5.png) no-repeat center top;background-size:20px;}
 .x-panel-bottom .buttonGroup a:nth-child(2) .this{background:#f5f5f5 url(./images/nav_icon6.png) no-repeat center top;background-size:20px;}
 .x-panel-bottom .buttonGroup a:nth-child(3) .this{background:#f5f5f5 url(./images/nav_icon7.png) no-repeat center top;background-size:20px;}
-.x-panel-bottom .buttonGroup a:nth-child(4) .this{background:#f5f5f5 url(./images/nav_icon8.png) no-repeat center top;background-size:20px;}
+.x-panel-bottom .buttonGroup a:nth-child(4) .this{background:#f5f5f5 url(./images/nav_icon8.png) no-repeat center top;background-size:20px;}*/
+.x-panel-bottom .btn-group a img{width: 20px;padding:0;}
+.x-panel-bottom .btn-group a span{font-size:12px;font-weight: normal;}
 
 /*个人页面*/
+
 .content_me .userinfo .media-body .x-output{color: #fff;}
 
 /*底部导航*/

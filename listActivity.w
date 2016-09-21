@@ -10,7 +10,8 @@
   <column label="附件" name="attachment" type="String" xid="xid7"></column>
   <column label="发帖时间" name="dateline" type="Long" xid="xid8"></column>
   <column label="主题id" name="tid" type="Integer" xid="xid9"></column>
-  <column label="作者id" name="authorId" type="Integer" xid="xid10"></column></div>
+  <column label="作者id" name="authorId" type="Integer" xid="xid10"></column>
+  <column label="正文" name="message" type="String" xid="xid11"></column></div>
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
@@ -41,18 +42,18 @@
       <div class="media" xid="media1">        
         <div class="" xid="mediaBody1">
           <div component="$UI/system/components/justep/output/output" class="x-output title" xid="output_subject" bind-ref='ref("subject")'></div>
-          <div component="$UI/system/components/justep/output/output" class="x-output output_message" xid="output_message" bind-ref='ref("subject")'></div>
-          <div class="pic">
+          <div component="$UI/system/components/justep/output/output" class="x-output output_message" xid="output_message" bind-text='$model.subMessage( val("message"))'></div>
+          <div class="pic" bind-visible=' $model.isShowPic( val("attachment"))'>
             <a href="#" xid="a1">
-              <ins><img class="" src="" alt="" xid="image1" bind-attr-src='$model.findThumbPicBytid( val("attachment"))'></img></ins>
-              <ins><img class="" src="" alt="" xid="image2" bind-attr-src='$model.findThumbPicBytid( val("attachment"))'></img></ins>
-              <ins><img class="" src="" alt="" xid="image3" bind-attr-src='$model.findThumbPicBytid( val("attachment"))'></img></ins>
+              <ins><img class="" src="" alt="" xid="image1" bind-attr-src='$model.findThumbPicBytid( val("attachment"), 1)'></img></ins>
+              <ins><img class="" src="" alt="" xid="image2" bind-attr-src='$model.findThumbPicBytid( val("attachment"), 2)'></img></ins>
+              <ins><img class="" src="" alt="" xid="image3" bind-attr-src='$model.findThumbPicBytid( val("attachment"), 3)'></img></ins>
               <!-- <ins><img class="" src="" alt="" xid="image4" bind-attr-src=' $model.findThumbPicBytid("23") '></img></ins> -->
             </a> 
           </div>
-          <span component="$UI/system/components/justep/output/output" class="x-output dateTime" xid="output_time" bind-text=' $model.dateTime( val("dateline"))'></span>
+          
           <span component="$UI/system/components/justep/output/output" class="x-output author" xid="output_author" bind-ref='ref("author")'></span>
-          <span component="$UI/system/components/justep/output/output" class="x-output views" xid="output_views" bind-ref='ref("views")'></span>
+          <span component="$UI/system/components/justep/output/output" class="x-output dateTime" xid="output_time" bind-text='$model.datelineToBeforeDay( val("dateline"))'></span><span component="$UI/system/components/justep/output/output" class="x-output views" xid="output_views" bind-ref='ref("views")'></span>
         </div> 
       </div>
   </li>

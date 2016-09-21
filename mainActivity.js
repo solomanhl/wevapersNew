@@ -13,6 +13,8 @@ define(function(require){
 		this.server = "http://wevapers.gkybi.com.cn";
 		this.imgserver = "http://www.wevapers.com.cn";
 		
+		this.deviceIsReady = false;
+		
 		this.localUserLoaded = false;
 		this.username;
 		this.password;
@@ -40,6 +42,7 @@ define(function(require){
 	Model.prototype.modelLoad = function(event) {
 		var self = this;
 //		localStorage.setItem('username','测试用户');
+		this.deviceIsReady = true;
 		//添加事件
 		justep.Shell.on("onRefreshUser", this.onRefreshUser, this);
 		
@@ -529,6 +532,10 @@ define(function(require){
 	
 	//消息页
 	Model.prototype.content_msgActive = function(event){
+		this.comp("button3").set({
+		  "icon": "img:" + this.toUrl("./images/nav_icon7.png")
+		});
+		
 		this.getMsg_sys(false);
 		this.getMsg_com(false);
 		this.getMsg_atme(false);
@@ -681,30 +688,90 @@ define(function(require){
 	
 
 	
+	Model.prototype.content_homeActive = function(event){
+		if (this.deviceIsReady){
+			this.comp("button1").set({
+			  "icon": "img:" + this.toUrl("./images/nav_icon5.png")
+			});
+		}
+	};
+	
+
+	
+	Model.prototype.content_homeInactive = function(event){
+		this.comp("button1").set({
+		  "icon": "img:" + this.toUrl("./images/nav_icon1.png")
+		});
+	};
+	
+
+	
+	Model.prototype.content_forumActive = function(event){
+//		alert("forum act");
+		this.comp("button2").set({
+		  "icon": "img:" + this.toUrl("./images/nav_icon6.png")
+		});
+	};
+	
+
+	
+	Model.prototype.content_forumInactive = function(event){
+//		alert("forum Inact");
+		this.comp("button2").set({
+		  "icon": "img:" + this.toUrl("./images/nav_icon2.png")
+		});
+	};
+	
+
+	
+	Model.prototype.content_msgInactive = function(event){
+		this.comp("button3").set({
+		  "icon": "img:" + this.toUrl("./images/nav_icon3.png")
+		});
+	};
+	
+
+	
+	Model.prototype.content_meActive = function(event){
+		this.comp("button4").set({
+		  "icon": "img:" + this.toUrl("./images/nav_icon8.png")
+		});
+	};
+	
+
+	
+	Model.prototype.content_meInactive = function(event){
+		this.comp("button4").set({
+		  "icon": "img:" + this.toUrl("./images/nav_icon4.png")
+		});
+	};
+	
+
+	
 	return Model;
 });
 
-$(function(){
-//	$(".x-panel-bottom a").click(function(){
-//		$(".x-panel-bottom a .this").removeClass("this")
-//		$(this).find("span").addClass("this");
+//$(function(){
+////	$(".x-panel-bottom a").click(function(){
+////		$(".x-panel-bottom a .this").removeClass("this")
+////		$(this).find("span").addClass("this");
+////	})
+//
+//	// 底部导航切换
+//
+//	$(".content_forum .col3 ul li").click(function(){
+//		$(".content_forum .col3 ul li h5").css("color","#444444");
+//		$(".content_forum .col3 ul li h5").css("background","#f5f5f5");
+//		$(this).find("h5").css("color","#21b589");
+//		$(this).find("h5").css("background","#ffffff");
+//	});
+//
+//	// 社区栏目切换
+//
+//	$(".content_msg .msg .x-card .list-nav a").click(function(){
+//		$(this).addClass("this").siblings(".this").removeClass("this");
 //	})
-
-	// 底部导航切换
-
-	$(".content_forum .col3 ul li").click(function(){
-		$(".content_forum .col3 ul li h5").css("color","#444444");
-		$(".content_forum .col3 ul li h5").css("background","#f5f5f5");
-		$(this).find("h5").css("color","#21b589");
-		$(this).find("h5").css("background","#ffffff");
-	});
-
-	// 社区栏目切换
-
-	$(".content_msg .msg .x-card .list-nav a").click(function(){
-		$(this).addClass("this").siblings(".this").removeClass("this");
-	})
-
-	// 消息顶部导航切换
-	
-})
+//
+//	// 消息顶部导航切换
+//	
+//})

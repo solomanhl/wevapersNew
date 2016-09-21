@@ -84,12 +84,17 @@ define(function(require){
 	}
 	
 	Model.prototype.subMessage = function(str){
-		var out = str;
-		var len = 20
-		if (str.length > len){
-			out = str.substring(0,len);
+		if (str != null && str != ""){
+			var out = str;
+			var len = 60;
+			if (str.length > len){
+				out = str.substring(0,len);
+			}
+			return out;
+		}else{
+			return "";
 		}
-		return out;
+		
 	}
 	
 	Model.prototype.dateTime = function(dateline){
@@ -98,6 +103,15 @@ define(function(require){
 //		return time.toLocaleDateString();
 	}
 	
+	//是否显示图片div
+	Model.prototype.isShowPic = function (attachment){
+		if (attachment !== "" && attachment!= null){
+			return true;
+		}else{
+			return false;
+		}
+		
+	};
 	
 	//图片路径转换
 	Model.prototype.toUrl = function(url){
@@ -105,11 +119,19 @@ define(function(require){
 	};
 	
 	//找附件图片
-	Model.prototype.findThumbPicBytid = function(attachment){
-		var rtn = this.toUrl("./images/default_img.png" );
-		
+	Model.prototype.findThumbPicBytid = function(attachment, index){//attachment:图片字符串集  index:1,2,3
+//		alert(attachment);
+//		var rtn = this.toUrl("./images/default_img.png" );
+		var rtn = this.toUrl("" );
+			
 		if (attachment !== "" && attachment!= null){
-			rtn = this.imgserver + "/data/attachment/forum/" + attachment;
+			var attachs = attachment.split(",");	//因为最后多一个，所以会多一个空值，下面的判断也不用-1
+			if ( attachs.length > index ){
+				rtn = this.imgserver + "/data/attachment/forum/" + attachs[index - 1];
+			}else{
+				rtn = this.toUrl("./images/default_img.png" );
+			}
+			
 		}
 //		alert(rtn); 
 		return rtn;
@@ -147,7 +169,49 @@ define(function(require){
 	    justep.Shell.showPage(url, params);
 	};
 
+//dateline转换
+	Model.prototype.datelineToBeforeDay = function(dateline){
+//		var mydate = new Date();//Tue Jul 26 2016 09:24:38 GMT+0800(中国标准时间)
+//		mydate.toLocaleDateString(); //获取当前日期，如2016/7/26
+//		var mytime=mydate.toLocaleTimeString(); //获取当前时间,如上午9：35：35
+		
+		var timestampNow = new Date().getTime();//结果：1280977330748获取了当前毫秒的时间戳。
+		var timestampPost = dateline * 1000; //帖子时间转成毫秒级
 
+		var time1 = new Date(timestampPost)//发帖标准时间
+		var year1 = time1.getUTCFullYear();
+		var mounth1 = time1.getUTCMonth()+1;
+		var day1 = time1.getUTCDate();
+		var hour1 = time1.getUTCHours();
+		var minite1 = time1.getUTCMinutes() ;
+		var second1 = time1.getUTCSeconds();
+		
+		var time2 = new Date(timestampNow)//当前标准时间
+		var year2 = time2.getUTCFullYear();
+		var mounth2 = time2.getUTCMonth()+1;
+		var day2 = time2.getUTCDate();
+		var hour2 = time2.getUTCHours();
+		var minite2 = time2.getUTCMinutes() ;
+		var second2 = time2.getUTCSeconds();
+
+		var rtn = "";
+		
+		if (year2 - year1 > 0){
+			rtn = (year2 - year1) + "年前";
+		}else if(mounth2 - mounth1 > 0){
+			rtn = (mounth2 - mounth1) + "个月前";
+		}else if(day2 - day1 > 0){
+			rtn = (day2 - day1) + "天前";
+		}else if(hour2 - hour1 > 0){
+			rtn = (hour2 - hour1) + "小时前";
+		}else if(minite2 - minite1 > 0){
+			rtn = (minite2 - minite1) + "分钟前";
+		}else if(second2 - second1 > 0){
+			rtn = (second2 - second1) + "秒前";
+		}
+		
+		return rtn;
+	}
 	Model.prototype.modelLoad = function(event){
 		//添加事件
 		justep.Shell.on("onRefreshList", this.onRefreshList, this);

@@ -82,6 +82,8 @@
     <require xid="require1" url="css!$UI/wevapers/base"/>  
     <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"/> 
   </resource>
-<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver_share" opacity="0.2" anchor="top1" style="width:100%;">
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver popOver_share" direction="auto" xid="popOver_share" opacity="0.2" anchor="top1" style="width:100%;">
    <div class="x-popOver-overlay" xid="div8"></div>
-   <div class="x-popOver-content" xid="div9"><iframe src="./share.w" xid="iframe_share" width="100%"></iframe></div></div></div>
+   <div class="x-popOver-content" xid="div9">
+   <!-- <iframe src="./share.w" xid="iframe_share" width="100%"></iframe> -->
+  <div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="./share.w"></div></div></div></div>

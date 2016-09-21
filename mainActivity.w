@@ -60,11 +60,11 @@
   <column name="icon" type="String" xid="xid48"></column>
   <column name="name" type="String" xid="xid49"></column>
   <column name="fup" type="String" xid="xid50"></column>
-  <column label="帖子数量（含回帖）" name="posts" type="Integer" xid="xid51"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data_forum_forum" idColumn="fid"><column label="forumID" name="fid" type="Integer" xid="xid52"></column>
+  <column label="帖子数量（含回帖）" name="count" type="Integer" xid="xid51"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data_forum_forum" idColumn="fid"><column label="forumID" name="fid" type="Integer" xid="xid52"></column>
   <column name="icon" type="String" xid="xid53"></column>
   <column name="name" type="String" xid="xid54"></column>
   <column label="上级groupID" name="fup" type="String" xid="xid55"></column>
-  <column label="帖子数量（含回帖)" name="posts" type="Integer" xid="xid56"></column></div></div>  
+  <column label="帖子数量（含回帖)" name="count" type="Integer" xid="xid56"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar header"
     xid="panel1"> 
     <div class="x-panel-top top1" xid="top1"> 
@@ -88,7 +88,7 @@
       _xid="C6F60BC124400001C16E1FBCEA631E33"> 
       <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full"
         active="0" xid="contents1"> 
-        <div class="x-contents-content x-scroll-view" xid="content_home"> 
+        <div class="x-contents-content x-scroll-view" xid="content_home" onActive="content_homeActive" onInactive="content_homeInactive"> 
           <div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView"
             xid="scrollView1" onPullDown="scrollView1PullDown" onPullUp="scrollView1PullUp"> 
             <div class="x-content-center x-pull-down container" xid="div1"> 
@@ -159,7 +159,7 @@
             </div> 
           </div> 
         </div>  
- <div class="x-contents-content x-cards content_forum" xid="content_forum"> 
+ <div class="x-contents-content x-cards content_forum" xid="content_forum" onActive="content_forumActive" onInactive="content_forumInactive"> 
     <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
    <div class="x-panel-top more_plate" xid="top2"><div xid="div_group" align="center" class="more_btn"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" xid="button_group" onClick="button_groupClick">
    <span xid="span16">更多</span>
@@ -176,10 +176,10 @@
    <div class="media-body" xid="mediaBody_forum">
     <div component="$UI/system/components/justep/output/output" class="x-output title" xid="output_forumName" bind-ref='ref("name")'></div>
   
-  <div xid="div_forum_postNum" class="tip"><label xid="label_forum_postNum"><![CDATA[帖子数量：]]></label><div component="$UI/system/components/justep/output/output" class="x-output num" xid="output_forum_postNum" bind-ref='ref("posts")'></div></div></div> </div></li></ul> </div></div>
+  <div xid="div_forum_postNum" class="tip"><label xid="label_forum_postNum"><![CDATA[帖子数量：]]></label><div component="$UI/system/components/justep/output/output" class="x-output num" xid="output_forum_postNum" bind-ref='ref("count")'></div></div></div> </div></li></ul> </div></div>
    </div></div>
    </div></div>  
-   <div class="x-contents-content  x-scroll-view content_msg" xid="content_msg" onActive="content_msgActive"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_msg" onPullDown="scrollView_msgPullDown" onPullUp="scrollView_msgPullUp">
+   <div class="x-contents-content  x-scroll-view content_msg" xid="content_msg" onActive="content_msgActive" onInactive="content_msgInactive"><div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView_msg" onPullDown="scrollView_msgPullDown" onPullUp="scrollView_msgPullUp">
    <div class="x-content-center x-pull-down container" xid="div9">
     <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i7"></i>
     <span class="x-pull-down-label" xid="span11">下拉刷新...</span></div> 
@@ -224,7 +224,7 @@
    <div class="x-content-center x-pull-up" xid="div11">
     <span class="x-pull-up-label" xid="span12">加载更多...</span></div> </div></div>
 
-    <div class="x-contents-content content_me" xid="content_me">
+    <div class="x-contents-content content_me" xid="content_me" onActive="content_meActive" onInactive="content_meInactive">
           <div xid="div_userinfo" class="userinfo">
             <div class="media" xid="media_me"> 
               <div class="media-left" xid="mediaLeft4"> 
@@ -294,21 +294,25 @@
     </div>  
     <div class="x-panel-bottom" xid="bottom1"> 
       <div component="$UI/system/components/justep/button/buttonGroup" tabbed="true"
-        xid="buttonGroup2" class="buttonGroup"> 
+        xid="buttonGroup2" class="btn-group x-card btn-group-justified"> 
         <a component="$UI/system/components/justep/button/button" xid="button1"
-          target="content_home"> 
-          <span xid="span1" class="this">首页</span> 
+          target="content_home" label="首页" class="btn btn-default btn-icon-top" icon="img:$UI/wevapersNew/images/nav_icon6.png|"> 
+          <i xid="i1" class=""/>           
+          <img src="$UI/wevapersNew/images/nav_icon6.png" xid="image9"></img><span xid="span1" class="this">首页</span> 
         </a>  
-        <a component="$UI/system/components/justep/button/button" xid="button1"
-          target="content_forum"> 
-          <span xid="span1">社区</span> 
+        <a component="$UI/system/components/justep/button/button" xid="button2"
+          target="content_forum" label="社区" class="btn btn-default btn-icon-top" icon="img:$UI/wevapersNew/images/nav_icon2.png|"> 
+          <i xid="i2" class=""/>          
+          <img src="$UI/wevapersNew/images/nav_icon2.png" xid="image23"></img><span xid="span1">社区</span> 
         </a>  
-        <a component="$UI/system/components/justep/button/button" xid="button3" target="content_msg"> 
-          <span xid="span1">消息</span> 
+        <a component="$UI/system/components/justep/button/button" xid="button3" target="content_msg" label="消息" class="btn btn-default btn-icon-top" icon="img:$UI/wevapersNew/images/nav_icon3.png|"> 
+          <i xid="i3" class=""/>
+          <img src="$UI/wevapersNew/images/nav_icon3.png" xid="image24"></img><span xid="span1">消息</span> 
         </a>  
         <a component="$UI/system/components/justep/button/button" xid="button4"
-          target="content_me"> 
-          <span xid="span1">我的</span> 
+          target="content_me" label="我的" class="btn btn-default btn-icon-top" icon="img:$UI/wevapersNew/images/nav_icon4.png|"> 
+          <i xid="i4" class=""/>           
+          <img src="$UI/wevapersNew/images/nav_icon4.png" xid="image25"></img><span xid="span1">我的</span> 
         </a> 
       </div> 
     </div> 

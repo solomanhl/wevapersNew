@@ -72,7 +72,7 @@ define(function(require){
 		this.getMessage(this.tid);
 		this.getReplies(this.tid, false);
 		
-	    
+//	    alert(this.tid);
 
 	};
 	
@@ -173,7 +173,7 @@ define(function(require){
 		this.comp("output_author").set({value:this.author});
 		this.comp("output_views").set({value:"浏览" + this.views + "次"});
 		this.comp("output_replies").set({value:this.replies + "评论"});
-		this.comp("output_message").set({value:this.message});
+		this.comp("output_message").set({value:this.replace(this.message)});
 //		this.comp("output_message").set({value:"<img src=\"http://wevapers.com.cn//mobcent//app/data/phiz/default/16.png\">"});
 	}
 	
@@ -239,6 +239,9 @@ define(function(require){
 	//分享
 	Model.prototype.image_shareClick = function(event){
 		this.comp("popOver_share").show();
+
+		$(".popOver_share .x-popOver-content").css("top","auto");
+		$(".popOver_share .x-popOver-content").css("bottom","0");
 	};
 
 	
