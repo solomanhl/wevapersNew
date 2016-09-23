@@ -4,6 +4,8 @@ define(function(require){
 
 	var Model = function(){
 		this.callParent();
+		
+		this.server = "http://wevapers.gkybi.com.cn";
 	};
 
 	Model.prototype.button_submitClick = function(event){
@@ -63,7 +65,7 @@ define(function(require){
 	};
 	
 	Model.prototype.jumpToChangePwd = function (uid, username){
-		var url = require.toUrl("./chagePassActivity.w");
+		var url = require.toUrl("./chagePassActivity2.w");
 		var params = {
 	        from : "fogetActivity",
 	        uid : uid,

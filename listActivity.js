@@ -21,9 +21,12 @@ define(function(require){
 		
 		this.fid = event.params.fid;
 		this.name = event.params.name;
+//		alert(this.name);
+		if (this.fid != "" && this.fid != null){
+			this.updateUI();
+			this.getThemeList(false);
+		}
 		
-		this.updateUI();
-		this.getThemeList(false);
 	};
 	
 	//获取帖子列表
@@ -76,7 +79,10 @@ define(function(require){
 	};
 	
 	Model.prototype.updateUI = function(){
-		this.comp("title").set({"title" : this.name});
+		if (this.name != "" && this.name != null){
+//			alert(this.name);
+			this.comp("title").set({"title" : this.name});
+		}
 	}
 	
 	Model.prototype.getFid = function(){
@@ -151,10 +157,12 @@ define(function(require){
 	};
 
 	Model.prototype.list1Click = function(event){
+		var me = this;
 		var current = event.bindingContext.$object;//获得当前行
 		var url = require.toUrl("./detailActivity.w");
 	    var params = {
 	        from : "listActivity",
+	        name : me.name,
 	        // 将data中的一行数据传给对话框
 	        data_post : this.comp("themeList").getCurrentRow().toJson(),
 //	        subject : current.val("subject"),//这里val为什么报错
@@ -225,8 +233,20 @@ define(function(require){
 
 	Model.prototype.onRefreshList = function(event){
 		this.fid = event.fid;
-		if (this.fid != "" && this.fid != null){
-//			alert(this.fid);
+		this.name = event.name;
+		
+//		alert(this.name);
+		
+		
+	};
+
+	Model.prototype.modelActive = function(event){
+		if (this.name != "" && this.name != null){
+			this.updateUI();
+		}
+		
+		if (this.fid != "" && this.fid != null && this.name != "" && this.name != null){
+			
 			this.getThemeList(false);
 		}
 	};

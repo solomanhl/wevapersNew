@@ -11,6 +11,7 @@ define(function(require){
 		this.pre_forum_thread;
 //		this.post;
 		
+		this.name;
 		this.fid;
 		this.tid;
 		this.message;
@@ -54,14 +55,15 @@ define(function(require){
 
 	    var me = this;
 	    var from = event.params.from;
+	    this.name = event.params.name;
 	    var data_post = event.params.data_post;
+	    
 //	    alert(from + data_post);
 	   
 	    var post = this.comp("post");
 	    post.loadData([data_post]);
 	    post.first();
 
-	    
 	    this.subject = post.val("subject");
 	    this.author = post.val("author");
 	    this.fid = post.val("fid");
@@ -230,8 +232,12 @@ define(function(require){
 
 	
 	Model.prototype.modelUnLoad = function(event){
+//		alert(this.name);
 //		setTimeout(function(){
-			justep.Shell.fireEvent("onRefreshList", {"fid" : this.fid});
+			justep.Shell.fireEvent("onRefreshList", {
+				"fid" : this.fid, 
+				"name" : this.name
+			});
 //		},5);
 	};
 

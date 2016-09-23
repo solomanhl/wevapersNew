@@ -28,15 +28,14 @@ define(function(require){
 
 	Model.prototype.button_submitClick = function(event){
 	
-		var passwd ,passwd1, passwd2, passwd_old;
+		var passwd ,passwd1, passwd2;
 		passwd1 = this.comp("password_new").val();
 		passwd2 = this.comp("password_new2").val();
-		passwd_old = this.comp("password_old").val();
 
 		if (passwd1 == passwd2 && passwd1 != "" && passwd1 != null){
 			
 			passwd = passwd1;
-			this.changePassword(passwd_old ,passwd)
+			this.changePassword(passwd);
 			
 		}else{
 			if (justep.Browser.isX5App){
@@ -45,7 +44,7 @@ define(function(require){
 		}
 	};
 
-	Model.prototype.changePassword = function (passwdOld, passwdNew){
+	Model.prototype.changePassword = function ( passwdNew){
 		var me = this;
 		$.ajax({
 	        type: "get",
@@ -55,10 +54,9 @@ define(function(require){
 	        dataType: "jsonp",
 	        jsonp: "CallBack",
 	        data: {
-	        	"flag" : 1,	//修改密码，需要旧密码
+	        	"flag" : 0,	//重置密码，不需要旧密码
 	        	"uid" : me.uid,
-	        	"password" : passwdNew,
-	        	"password_old" : passwdOld
+	        	"password" : passwdNew
 	        },
 	        success: function(resultData) {
 //	        	alert(resultData.result);
@@ -97,9 +95,9 @@ define(function(require){
 	};
 	
 	Model.prototype.modelUnLoad = function(event){
-		setTimeout(function(){
+//		setTimeout(function(){
 			justep.Shell.fireEvent("onRefreshUser", {});
-		},5);
+//		},5);
 	};
 	
 	return Model;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="width:390px;height:auto;top:148px;left:311px;" onParamsReceive="modelParamsReceive" onunLoad="modelUnLoad" onLoad="modelLoad"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="width:390px;height:auto;top:148px;left:311px;" onParamsReceive="modelParamsReceive" onunLoad="modelUnLoad" onLoad="modelLoad" onActive="modelActive"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="themeList" idColumn="tid"><column label="论坛id" name="fid" type="Integer" xid="xid1"></column>
   <column label="作者" name="author" type="String" xid="xid2"></column>
   <column label="回复数量" name="replies" type="Integer" xid="xid3"></column>
