@@ -42,10 +42,7 @@ define(function(require){
 
 		        	
 		        if (status == 1){
-		        	if (justep.Browser.isX5App){
-						this.jumpToChangePwd(uid, username);
-					}
-		        	justep.Shell.closePage();
+					me.jumpToChangePwd(uid, username);
 		        }else if (status == -1){ //找不到用户
 		        	if (justep.Browser.isX5App){
 						window.plugins.toast.show("找不到用户", "long", "center");

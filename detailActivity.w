@@ -86,4 +86,4 @@
    <div class="x-popOver-overlay" xid="div8"></div>
    <div class="x-popOver-content" xid="div9">
    <!-- <iframe src="./share.w" xid="iframe_share" width="100%"></iframe> -->
-  <div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="./share.w"></div></div></div></div>
+  <div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1"></div></div></div></div>

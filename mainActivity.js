@@ -678,10 +678,15 @@ define(function(require){
 	Model.prototype.div_fenxiangClick = function(event){
 		if (justep.Browser.isX5App){
 //			var url = window.location.href;
-			var url = "http://59.173.242.10000/wevapers/index.html";
-	        plugins.socialsharing.share("Wevapers，万人迷的游记。Million people in the travel notes.\r\nwww.wevapers.com\r\n", 
+			var url = "<a href=\"http://59.173.242.37:10000/wevapersNew/index.html\">用手机打开Wevapers</a>";
+//			 plugins.socialsharing.share(message, subject, fileOrFileArray, url, successCallback, errorCallback);
+	        plugins.socialsharing.share("Wevapers，万人迷的游记。\r\nMillion people in the travel notes.\r\n<a href=\"http://www.wevapers.com\">Wevapers论坛</a>\r\n", 
 	        		"Wevapers", 
-	        		url);
+	        		null,
+	        		url,
+	        		null,
+	        		null);
+	       
 		}
 		
 	};

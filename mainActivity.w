@@ -238,7 +238,7 @@
               </div> 
             </div>  
             <a component="$UI/system/components/justep/button/button" class="btn btn-default"
-              label="立即登录" xid="button_login_now" id="button_login_now" onClick="loginNow" bind-visible=" ! $model.getLoginState()"> 
+              label="立即登录" xid="button_login_now" id="button_login_now" onClick="loginNow" > 
               <span xid="span10">立即登录</span>
             </a>
           </div>

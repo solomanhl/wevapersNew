@@ -16,10 +16,12 @@ define(function(require){
 		this.tid;
 		this.message;
 		
-		this.subject;;
+		this.subject;
 		this.author;
 		this.views;
 		this.replies;
+		
+		this.shareimg = "";//传给分享的img
 		
 		this.pageNo=1;
 		this.pageCount=1;
@@ -244,6 +246,13 @@ define(function(require){
 	
 	//分享
 	Model.prototype.image_shareClick = function(event){
+		this.shareimg = require.toUrl("./images/camera.png");
+		var windowContainer1 = this.comp("windowContainer1");
+		var url = require.toUrl("./share.w");
+		var param = {"img" : this.shareimg,
+				"title" : this.subject};
+		windowContainer1.load(url, param);
+		
 		this.comp("popOver_share").show();
 
 		$(".popOver_share .x-popOver-content").css("top","auto");
