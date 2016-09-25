@@ -12,19 +12,18 @@
   <column label="主题id" name="tid" type="Integer" xid="xid9"></column>
   <column label="作者id" name="authorId" type="Integer" xid="xid10"></column></div>
   
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="replies" idColumn="tid"><column label="帖子id" name="fid" type="Integer" xid="xid1"></column>
-  <column label="作者" name="author" type="String" xid="xid92"></column>
-  <column label="回复数量" name="replies" type="Integer" xid="xid93"></column>
-  <column label="查看数量" name="views" type="Integer" xid="xid94"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="replies" idColumn="pid"><column label="楼层" name="position" type="Integer" xid="xid1"></column>
+  <column label="论坛id" name="fid" type="Integer" xid="xid93"></column>
+  <column label="回复人" name="author" type="Integer" xid="xid94"></column>
   <column label="标题" name="subject" type="String" xid="xid95"></column>
-  <column label="最后更新" name="lastpost" type="Long" xid="xid96"></column>
-  <column label="附件" name="attachment" type="String" xid="xid97"></column>
-  <column label="发帖时间" name="dateline" type="Long" xid="xid98"></column>
+  <column label="回复id" name="pid" type="Integer" xid="xid96"></column>
+  <column label="回帖时间" name="dateline" type="Long" xid="xid98"></column>
   <column label="主题id" name="tid" type="Integer" xid="xid99"></column>
   <column label="作者id" name="authorId" type="Integer" xid="xid100"></column>
   <column label="回帖内容" name="message" type="String" xid="xid101"></column></div>
   
-  </div>  
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="attachments" idColumn="aid"><column label="图片路径" name="attachment" type="String" xid="xid11"></column>
+  <column label="附件id" name="aid" type="Integer" xid="xid12"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full details" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -69,7 +68,7 @@
     <div class="list_top">
   <div component="$UI/system/components/justep/output/output" class="x-output author" xid="output_comment_author" bind-ref='ref("author")'></div><img src="" alt="" xid="image_comment" bind-attr-src=' $model.toUrl("./images/comment_icon1.png")' bind-click="image_commentClick"></img>
   </div>
-  <div component="$UI/system/components/justep/output/output" class="x-output message" xid="output_comment_message" id="output_comment_message" bind-ref='ref("subject")'></div>
+  <div component="$UI/system/components/justep/output/output" class="x-output message" xid="output_comment_message" id="output_comment_message" bind-text='$model.replaceAttach( val("message"))'></div>
   </li></ul> </div></div>
    <div class="x-content-center x-pull-up" xid="div5">
     <span class="x-pull-up-label" xid="span2">加载更多...</span></div> </div>

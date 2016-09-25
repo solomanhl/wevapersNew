@@ -678,9 +678,9 @@ define(function(require){
 	Model.prototype.div_fenxiangClick = function(event){
 		if (justep.Browser.isX5App){
 //			var url = window.location.href;
-			var url = "<a href=\"http://59.173.242.37:10000/wevapersNew/index.html\">用手机打开Wevapers</a>";
+			var url = "<a href=\"http://www.wevapers.com\">Wevapers论坛</a>";
 //			 plugins.socialsharing.share(message, subject, fileOrFileArray, url, successCallback, errorCallback);
-	        plugins.socialsharing.share("Wevapers，万人迷的游记。\r\nMillion people in the travel notes.\r\n<a href=\"http://www.wevapers.com\">Wevapers论坛</a>\r\n", 
+	        plugins.socialsharing.share("Wevapers，万人迷的游记。\r\nMillion people in the travel notes.\r\n<a href=\"http://59.173.242.37:10000/wevapersNew/app.apk\">下载安卓版本 Android Version</a>\r\n<a href=\"http://59.173.242.37:10000/wevapersNew/app.ipa\">下载IOS版本 IOS Version</a>\r\n", 
 	        		"Wevapers", 
 	        		null,
 	        		url,

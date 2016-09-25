@@ -6,6 +6,7 @@ define(function(require){
 		this.callParent();
 		
 		this.server = "http://wevapers.gkybi.com.cn";
+		this.imgserver = "http://www.wevapers.com.cn";
 		
 		this.pre_forum_post;
 		this.pre_forum_thread;
@@ -25,6 +26,8 @@ define(function(require){
 		
 		this.pageNo=1;
 		this.pageCount=1;
+		
+		this.attachmentsObj; //附件列表json对象
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -74,7 +77,9 @@ define(function(require){
 		this.replies = post.val("replies");
 		
 		this.getMessage(this.tid);
-		this.getReplies(this.tid, false);
+		this.updateUI();//显示首页内容message
+		this.getAttachPic(); //请求该tid中的图片 含回帖 顺带把主帖中的图片替换掉
+	    this.getReplies(this.tid, false);//请求回帖
 		
 //	    alert(this.tid);
 
@@ -99,8 +104,12 @@ define(function(require){
 //	        	alert(resultData + "/" + JSON.stringify(resultData));
 	        	
 	        	me.message = resultData.message;
-//	        	alert(me.message );
-	        	me.updateUI();
+	        	me.comp("output_message").set({value:me.replace(me.message)});
+//	        	me.updateUI();
+	        	
+//	        	me.getAttachPic(); //请求该tid中的图片 含回帖 顺带把主帖中的图片替换掉
+//	        	
+//	        	me.getReplies(me.tid, false);//请求回帖
 	        	
 //	        	alert(me.totalPage_study);
 //	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
@@ -128,7 +137,7 @@ define(function(require){
 		$.ajax({
 	        type: "get",
 	        "async" : false,
-	        url: me.server + "/servlet/ForumThreadListServlet",
+	        url: me.server + "/servlet/ForumPostListServlet",
 	        contentType: "application/json; charset=utf-8",
 	        dataType: "jsonp",
 	        jsonp: "CallBack",
@@ -139,17 +148,17 @@ define(function(require){
 	        success: function(resultData) {
 //	        	alert(resultData.message);
 //	        	alert(resultData + "/" + JSON.stringify(resultData));
-	        	var pageCount, pageNo, threadsObj;
+	        	var pageCount, pageNo, postsObj;
 	        	
 	        	pageCount = resultData.pageCount;
 	        	pageNo = resultData.pageNo;
-	        	threadsObj = resultData.threads;
+	        	postsObj = resultData.posts;
 	        	
 	        	me.pageCount = pageCount;
 	        	me.pageNo = pageNo;
 	        	
 //	        	alert(pageNo);
-//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+//	        	alert(postsObj + "/" + JSON.stringify(postsObj));
 	        	        	
 //	        	$.each(resultData,function(name,value) { 
 //	        		alert(name); 
@@ -158,8 +167,9 @@ define(function(require){
 //	        	);
 	        	
 	        	if (pageNo > 0){
-		        	json={"@type" : "table","replies" : {"idColumnName" : "tid","idColumnType" : "Integer", },"rows" :threadsObj };
+		        	json={"@type" : "table","replies" : {"idColumnName" : "tid","idColumnType" : "Integer", },"rows" :postsObj };
 		        	data.loadData(json, isApend);
+		        	
 		        	
 //		        	alert(data.count());
 	        	}
@@ -170,6 +180,91 @@ define(function(require){
 	         }
 	    });
 	};
+	
+	
+	//获取tid中的图片附件 含回帖
+	Model.prototype.getAttachPic = function(){
+		var me = this;
+		var data = this.comp("attachments");
+		
+		$.ajax({
+	        type: "get",
+	        "async" : false,
+	        url: me.server + "/servlet/ForumAttachmentListServlet",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: "jsonp",
+	        jsonp: "CallBack",
+	        data: {
+	        	"tid" : me.tid
+	        },
+	        success: function(resultData) {
+//	        	alert(resultData.message);
+//	        	alert(resultData + "/" + JSON.stringify(resultData));
+	        	var count;
+	        	
+	        	count = resultData.count;
+	        	me.attachmentsObj = resultData.attachments;
+	        	
+//	        	alert(pageNo);
+//	        	alert(threadsObj + "/" + JSON.stringify(threadsObj));
+	        	        	
+//	        	$.each(resultData,function(name,value) { 
+//	        		alert(name); 
+//	        		alert(value); 
+//	        		}
+//	        	);
+	        	
+	        	if (count > 0){
+	        		json={"@type" : "table","attachments" : {"idColumnName" : "aid","idColumnType" : "Integer", },"rows" :me.attachmentsObj };
+		        	data.loadData(json, false);
+		        	
+	        		//顺带把主帖的图片替换掉
+	        		var output_message = me.comp("output_message");
+	        		var message = me.replaceAttach(output_message.value);
+		        	output_message.set({value:message});
+//		        	alert(data.count());
+	        	}
+	        	
+	        },
+	         error:function (){  
+	        	 alert("服务器数据错误");
+	         }
+	    });
+	};
+	
+	//通过附件列表，替换回帖中的附件图片
+	Model.prototype.replaceAttach = function(message){
+		var me = this;
+		var msg = message;
+//		alert(JSON.stringify(this.attachmentsObj));
+		var aid;
+	    var attachment;
+		$.each(me.attachmentsObj, function (i, item){
+//			alert(i);
+			aid = item.aid;
+			attachment = item.attachment;
+			msg = me.replaceAttachFlag(aid, attachment, msg);//替换正文中的附件图片
+			}
+		);
+//		alert(msg);
+		return msg;
+	};
+	
+	//替换图片附件
+	Model.prototype.replaceAttachFlag = function (aid, attachment , message){
+		//[attach]182[/attach] 已经转成了 <attach>182</attach>
+//		rtn = rtn.replace(/\[img\]/g,'<img src=\"');
+//		rtn = rtn.replace(/\[\/img\]/g,'\">');
+//		var output_message = this.comp("output_message");
+		var msgOld = message; 
+		var strOld = "<attach>" + aid + "</attach>";
+		var strNew = "<img width=\"100%\" height=auto src=\"" + this.imgserver + "/data/attachment/forum/" + attachment + "\">";
+		var msgNew = msgOld.replace(strOld, strNew);
+		return msgNew;
+//		output_message.set({value:msgNew});
+//		alert(msgNew);
+	};
+	
 	
 	Model.prototype.updateUI = function(){
 //	alert(this.message);
@@ -194,8 +289,9 @@ define(function(require){
 		rtn = rtn.replace(/\[b\]/g,'<strong>');
 		rtn = rtn.replace(/\[\/b\]/g,'</strong>');
 		
+		rtn = rtn.replace(/\[img=0,1\]/g,'<img src=\"');
 		rtn = rtn.replace(/\[img\]/g,'<img src=\"');
-		rtn = rtn.replace(/\[\/img\]/g,'\">');
+		rtn = rtn.replace(/\[\/img\]/g,'\"/>');
 		
 		rtn = rtn.replace(/\[color=/g,'<font color=');
 		rtn = rtn.replace(/\[\/color\]/g,'</font>');

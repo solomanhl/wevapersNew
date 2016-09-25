@@ -32,6 +32,9 @@
 .details .x-panel-bottom .div-inline{overflow: hidden;position: relative;height: 2.8rem;line-height: 2.8rem;}
 .details .x-panel-bottom .div-inline span{position: absolute;right: 0;top: 0;width: 14%;color: #fff;display: block;border-radius: 4px;text-align: center;background: #21b589;font-size: 1.1rem;}
 
+/*帖子图片*/
+/* .details .x-panel-content .article img{width: 100%;height: auto;margin-bottom: 1rem;} */
+
 /*底部*/
 
 .x-popOver-content{min-width: 100%;background: #e8e8e8;bottom: 0;left: 0;top: none;overflow: hidden;margin:0;}
