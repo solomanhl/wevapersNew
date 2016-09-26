@@ -254,7 +254,7 @@ define(function(require){
 		}
 		
 		return rtn;
-	}
+	};
 	
 	
 	//找附件图片

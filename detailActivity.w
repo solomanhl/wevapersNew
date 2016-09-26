@@ -62,13 +62,15 @@
   </div> </div><div component="$UI/system/components/justep/output/output" class="x-output message" xid="output_message"></div>
 </div>
   <div component="$UI/system/components/justep/list/list" class="x-list x-cards comm_list" xid="list_comment" data="replies">
+    <span class="comm_head"><em>评论列表</em></span>
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1">
     <!-- <img src="" alt="" xid="image_comment_head" bind-attr-src='$model.toUrl("./images/user_img.png")'></img> -->
     <div class="list_top">
-  <div component="$UI/system/components/justep/output/output" class="x-output author" xid="output_comment_author" bind-ref='ref("author")'></div><img src="" alt="" xid="image_comment" bind-attr-src=' $model.toUrl("./images/comment_icon1.png")' bind-click="image_commentClick"></img>
+  <div component="$UI/system/components/justep/output/output" class="x-output author" xid="output_comment_author" bind-ref='ref("author")'></div><div component="$UI/system/components/justep/output/output" class="x-output data" xid="output_replyDate" bind-text='$model.datelineToBeforeDay( val("dateline")) + "回复"'></div><ins src="" alt="" xid="image_comment" bind-attr-src=' $model.toUrl("./images/comment_icon1.png")' bind-click="image_commentClick">回复</ins>
   </div>
-  <div component="$UI/system/components/justep/output/output" class="x-output message" xid="output_comment_message" id="output_comment_message" bind-text='$model.replaceAttach( val("message"))'></div>
+  <div component="$UI/system/components/justep/output/output" class="x-output message" xid="output_comment_message" id="output_comment_message" bind-value='$model.replaceAttach( $model.replace(val("message"))) '></div>
+  
   </li></ul> </div></div>
    <div class="x-content-center x-pull-up" xid="div5">
     <span class="x-pull-up-label" xid="span2">加载更多...</span></div> </div>

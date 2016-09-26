@@ -27,7 +27,7 @@ define(function(require){
 		this.pageNo=1;
 		this.pageCount=1;
 		
-		this.attachmentsObj; //附件列表json对象
+		this.attachmentsObj = null; //附件列表json对象
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -77,9 +77,11 @@ define(function(require){
 		this.replies = post.val("replies");
 		
 		this.getMessage(this.tid);
-		this.updateUI();//显示首页内容message
-		this.getAttachPic(); //请求该tid中的图片 含回帖 顺带把主帖中的图片替换掉
-	    this.getReplies(this.tid, false);//请求回帖
+		
+//		this.getAttachPic(); //请求该tid中的图片 含回帖 顺带把主帖中的图片替换掉
+		
+//		this.getReplies(this.tid, false);//请求回帖
+	    
 		
 //	    alert(this.tid);
 
@@ -105,9 +107,9 @@ define(function(require){
 	        	
 	        	me.message = resultData.message;
 	        	me.comp("output_message").set({value:me.replace(me.message)});
-//	        	me.updateUI();
+	        	me.updateUI();
 	        	
-//	        	me.getAttachPic(); //请求该tid中的图片 含回帖 顺带把主帖中的图片替换掉
+	        	me.getAttachPic(); //请求该tid中的图片 含回帖 顺带把主帖中的图片替换掉
 //	        	
 //	        	me.getReplies(me.tid, false);//请求回帖
 	        	
@@ -133,6 +135,7 @@ define(function(require){
 	Model.prototype.getReplies = function(tid, isApend){
 		var me = this;
 		var data = this.comp("replies");
+		var list_comment = this.comp("list_comment");
 		
 		$.ajax({
 	        type: "get",
@@ -169,7 +172,6 @@ define(function(require){
 	        	if (pageNo > 0){
 		        	json={"@type" : "table","replies" : {"idColumnName" : "tid","idColumnType" : "Integer", },"rows" :postsObj };
 		        	data.loadData(json, isApend);
-		        	
 		        	
 //		        	alert(data.count());
 	        	}
@@ -222,6 +224,8 @@ define(function(require){
 	        		var output_message = me.comp("output_message");
 	        		var message = me.replaceAttach(output_message.value);
 		        	output_message.set({value:message});
+		        	
+		        	me.getReplies(me.tid, false);//请求回帖
 //		        	alert(data.count());
 	        	}
 	        	
@@ -237,15 +241,19 @@ define(function(require){
 		var me = this;
 		var msg = message;
 //		alert(JSON.stringify(this.attachmentsObj));
-		var aid;
-	    var attachment;
-		$.each(me.attachmentsObj, function (i, item){
-//			alert(i);
-			aid = item.aid;
-			attachment = item.attachment;
-			msg = me.replaceAttachFlag(aid, attachment, msg);//替换正文中的附件图片
-			}
-		);
+		if (msg !="" && msg != null){
+			var aid;
+		    var attachment;
+			$.each(me.attachmentsObj, function (i, item){
+	//			alert(i);
+				aid = item.aid;
+				attachment = item.attachment;
+	//			alert( aid + "/" + attachment);
+				msg = me.replaceAttachFlag(aid, attachment, msg);//替换正文中的附件图片
+				}
+			);
+		}
+		
 //		alert(msg);
 		return msg;
 	};
@@ -256,11 +264,17 @@ define(function(require){
 //		rtn = rtn.replace(/\[img\]/g,'<img src=\"');
 //		rtn = rtn.replace(/\[\/img\]/g,'\">');
 //		var output_message = this.comp("output_message");
-		var msgOld = message; 
-		var strOld = "<attach>" + aid + "</attach>";
-		var strNew = "<img width=\"100%\" height=auto src=\"" + this.imgserver + "/data/attachment/forum/" + attachment + "\">";
-		var msgNew = msgOld.replace(strOld, strNew);
-		return msgNew;
+
+		if (message != "" && message != null){
+			var msgOld = message; 
+			var strOld = "<attach>" + aid + "</attach>";
+			var strNew = "<img width=\"100%\" height=auto src=\"" + this.imgserver + "/data/attachment/forum/" + attachment + "\">";
+			var msgNew = msgOld.replace(strOld, strNew);
+			return msgNew;
+		}else{
+			return message;
+		}
+		
 //		output_message.set({value:msgNew});
 //		alert(msgNew);
 	};
@@ -306,6 +320,50 @@ define(function(require){
 		
 //		alert(rtn);
 //		$("output_comment_message").attr("text").replace("[", "<");
+		return rtn;
+	};
+	
+		//dateline转换
+	Model.prototype.datelineToBeforeDay = function(dateline){
+//		var mydate = new Date();//Tue Jul 26 2016 09:24:38 GMT+0800(中国标准时间)
+//		mydate.toLocaleDateString(); //获取当前日期，如2016/7/26
+//		var mytime=mydate.toLocaleTimeString(); //获取当前时间,如上午9：35：35
+		
+		var timestampNow = new Date().getTime();//结果：1280977330748获取了当前毫秒的时间戳。
+		var timestampPost = dateline * 1000; //帖子时间转成毫秒级
+
+		var time1 = new Date(timestampPost)//发帖标准时间
+		var year1 = time1.getUTCFullYear();
+		var mounth1 = time1.getUTCMonth()+1;
+		var day1 = time1.getUTCDate();
+		var hour1 = time1.getUTCHours();
+		var minite1 = time1.getUTCMinutes() ;
+		var second1 = time1.getUTCSeconds();
+		
+		var time2 = new Date(timestampNow)//当前标准时间
+		var year2 = time2.getUTCFullYear();
+		var mounth2 = time2.getUTCMonth()+1;
+		var day2 = time2.getUTCDate();
+		var hour2 = time2.getUTCHours();
+		var minite2 = time2.getUTCMinutes() ;
+		var second2 = time2.getUTCSeconds();
+
+		var rtn = "";
+		
+		if (year2 - year1 > 0){
+			rtn = (year2 - year1) + "年前";
+		}else if(mounth2 - mounth1 > 0){
+			rtn = (mounth2 - mounth1) + "个月前";
+		}else if(day2 - day1 > 0){
+			rtn = (day2 - day1) + "天前";
+		}else if(hour2 - hour1 > 0){
+			rtn = (hour2 - hour1) + "小时前";
+		}else if(minite2 - minite1 > 0){
+			rtn = (minite2 - minite1) + "分钟前";
+		}else if(second2 - second1 > 0){
+			rtn = (second2 - second1) + "秒前";
+		}
+		
 		return rtn;
 	};
 	
