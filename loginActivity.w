@@ -6,10 +6,10 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="width:189px;height:auto;top:33px;left:21px;" onunLoad="modelUnLoad">
     </div>  
   <div xid="div1" class="wrapper"> 
-    <img src="$UI/wevapers/images/login_close.png" alt="" xid="image_close" class="close"
+    <img src="$UI/wevapersNew/images/login_close.png" alt="" xid="image_close" class="close"
       align="middle" bind-click="image_closeClick"/>
     <div xid="div2" align="center" class="logo">
-      <img alt="" xid="image_logo" align="middle" src="$UI/wevapers/images/login_logo.png"/>
+      <img alt="" xid="image_logo" align="middle" src="$UI/wevapersNew/images/login_logo.png"/>
       <input component="$UI/system/components/justep/input/input" class=""
         xid="input_username" placeHolder="用户名" valueUpdateMode="input" style="color:#FFFFFF;"/>
       <input component="$UI/system/components/justep/input/password" class="pass"
@@ -22,16 +22,16 @@
     </div>  
     <div xid="div7" align="center" class="tip">
       <label xid="label_foget" bind-click="label_fogetClick"><![CDATA[忘记密码]]></label>  
-      <!-- <img src="$UI/wevapers/images/login_line.png" alt="" xid="image5"/> -->
+      <!-- <img src="$UI/wevapersNew/images/login_line.png" alt="" xid="image5"/> -->
       <label xid="label_reg" bind-click="label_regClick"><![CDATA[立即注册]]></label> 
     </div>
     <div xid="div3" align="center" class="software">
-      <img src="$UI/wevapers/images/login_icon1.png" alt="" xid="image_wechat"/>  
-      <img src="$UI/wevapers/images/login_icon2.png" alt="" xid="image_weibo"/>  
-      <img src="$UI/wevapers/images/login_icon3.png" alt="" xid="image_qq"/>
+      <img src="$UI/wevapersNew/images/login_icon1.png" alt="" xid="image_wechat"/>  
+      <img src="$UI/wevapersNew/images/login_icon2.png" alt="" xid="image_weibo"/>  
+      <img src="$UI/wevapersNew/images/login_icon3.png" alt="" xid="image_qq"/>
     </div>  
     <div xid="div5" style="width:100%;" class="software_bg">
-      <img src="$UI/wevapers/images/login_title.png" alt="" xid="image4" />
+      <img src="$UI/wevapersNew/images/login_title.png" alt="" xid="image4" />
     </div> 
   </div> 
-<resource xid="resource4"><require xid="require2" url="css!$UI/wevapers/base"></require></resource></div>
+<resource xid="resource4"><require xid="require2" url="css!$UI/wevapersNew/base"></require></resource></div>

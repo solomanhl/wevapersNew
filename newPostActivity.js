@@ -66,7 +66,6 @@ define(function(require){
 				this.saveToPost(pid, tid, title, timestampNow);
 //				this.saveToThread(pid, tid, title, timestampNow);
 				
-				
 			}
 		}
 		

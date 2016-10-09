@@ -22,7 +22,7 @@ define(function(require){
 		this.views;
 		this.replies;
 		
-		this.shareimg = "";//传给分享的img
+		this.shareimg = require.toUrl("./images/logo.png");//传给分享的img
 		
 		this.pageNo=1;
 		this.pageCount=1;
@@ -246,6 +246,9 @@ define(function(require){
 		    var attachment;
 			$.each(me.attachmentsObj, function (i, item){
 	//			alert(i);
+				if (i ==0 ){
+					me.shareimg = me.imgserver + "/data/attachment/forum/" + item.attachment;
+				}
 				aid = item.aid;
 				attachment = item.attachment;
 	//			alert( aid + "/" + attachment);
@@ -400,13 +403,14 @@ define(function(require){
 	
 	//分享
 	Model.prototype.image_shareClick = function(event){
-		this.shareimg = require.toUrl("./images/camera.png");
 		var windowContainer1 = this.comp("windowContainer1");
 		var url = require.toUrl("./share.w");
 		var param = {"img" : this.shareimg,
-				"title" : this.subject};
+				"title" : this.subject,
+				"url" : new justep.URL(window.location.href)
+				};
 		windowContainer1.load(url, param);
-		
+//		alert("share");
 		this.comp("popOver_share").show();
 
 		$(".popOver_share .x-popOver-content").css("top","auto");

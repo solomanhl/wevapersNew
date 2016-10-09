@@ -61,5 +61,5 @@
    <div class="x-content-center x-pull-up" xid="div3">
     <span class="x-pull-up-label" xid="span2">加载更多...</span></div> </div></div>
   </div> 
-<resource xid="resource2"><require xid="require1" url="css!$UI/wevapers/base"></require>
-  <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"></require></resource></div>
+<resource xid="resource2"><require xid="require1" url="css!$UI/wevapersNew/base"></require>
+  <require xid="require2" url="$UI/wevapersNew/jquery-1.10.2.min"></require></resource></div>

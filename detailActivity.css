@@ -1,5 +1,6 @@
 .details .x-titlebar{background:#21b589;color: #fff}
 .details .x-titlebar-title{font-weight: normal;}
+.details .x-titlebar-right a{display: block;padding: 8px 0;}
 .details .x-titlebar-right img{width:2rem;margin-right: 0.8rem;}
 
 /*标题栏*/

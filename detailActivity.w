@@ -39,7 +39,10 @@
           </div>  
           <div class="x-titlebar-title">详情</div>  
           <div class="x-titlebar-right reverse"> 
-          <img alt="" xid="image_share" bind-attr-src='$model.toUrl("./images/share3.png")' bind-click="image_shareClick"></img></div>
+            <a bind-click="image_shareClick">
+              <img alt="" xid="image_share" bind-attr-src='$model.toUrl("./images/share3.png")' ></img>
+            </a>
+          </div>
         </div> 
       </div>  
     <div class="x-panel-content  x-scroll-view" xid="content1" _xid="C7284A94D7E00001EE921BD0EF207B00" style="bottom: 0px;">
@@ -80,8 +83,8 @@
   <span class="send">发送</span>
 </div></div></div> 
   <resource xid="resource2">
-    <require xid="require1" url="css!$UI/wevapers/base"/>  
-    <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"/> 
+    <require xid="require1" url="css!$UI/wevapersNew/base"/>  
+    <require xid="require2" url="$UI/wevapersNew/jquery-1.10.2.min"/> 
   </resource>
 <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver popOver_share" direction="auto" xid="popOver_share" opacity="0.2" anchor="top1" style="width:100%;">
    <div class="x-popOver-overlay" xid="div8"></div>

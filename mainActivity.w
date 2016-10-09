@@ -245,21 +245,21 @@
           <div component="$UI/system/components/justep/button/buttonGroup"
             class="btn-group x-card btn-group-justified nav_group" tabbed="true" xid="buttonGroup1" bind-visible="false">
             <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-top"
-              label="我的收藏" xid="button_shoucang" icon="img:$UI/wevapers/images/user_icon1.gif|"> 
+              label="我的收藏" xid="button_shoucang" icon="img:$UI/wevapersNew/images/user_icon1.gif|"> 
               <i xid="i2"/>  
-              <img src="$UI/wevapers/images/user_icon1.gif" xid="image10"/>
+              <img src="$UI/wevapersNew/images/user_icon1.gif" xid="image10"/>
               <span xid="span6">我的收藏</span>
             </a>  
             <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-top"
-              label="发表的帖子" xid="button_fabiao" icon="img:$UI/wevapers/images/user_icon2.gif|"> 
+              label="发表的帖子" xid="button_fabiao" icon="img:$UI/wevapersNew/images/user_icon2.gif|"> 
               <i xid="i3"/>  
-              <img src="$UI/wevapers/images/user_icon2.gif" xid="image11"/>
+              <img src="$UI/wevapersNew/images/user_icon2.gif" xid="image11"/>
               <span xid="span7">发表的帖子</span>
             </a>  
             <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-top"
-              label="我的资料" xid="button_ziiao" icon="img:$UI/wevapers/images/user_icon3.gif|"> 
+              label="我的资料" xid="button_ziiao" icon="img:$UI/wevapersNew/images/user_icon3.gif|"> 
               <i xid="i4"/>  
-              <img src="$UI/wevapers/images/user_icon3.gif" xid="image12"/>
+              <img src="$UI/wevapersNew/images/user_icon3.gif" xid="image12"/>
               <span xid="span8">我的资料</span>
             </a>
           </div>  
@@ -318,8 +318,8 @@
     </div> 
   </div>  
   <resource xid="resource2">
-    <require xid="require1" url="css!$UI/wevapers/base"/>  
-    <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"/> 
+    <require xid="require1" url="css!$UI/wevapersNew/base"/>  
+    <require xid="require2" url="$UI/wevapersNew/jquery-1.10.2.min"/> 
   </resource>
 <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver_forum_group" anchor="titleBar1" opacity="0.2">
    <div class="x-popOver-overlay" xid="div18"></div>

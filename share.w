@@ -53,6 +53,6 @@
 		<a href="#">取消</a>
 	</div>	
 </div>
-<resource xid="resource2"><require xid="require1" url="css!$UI/wevapers/base"></require>
-  <require xid="require2" url="$UI/wevapers/jquery-1.10.2.min"></require></resource>
+<resource xid="resource2"><require xid="require1" url="css!$UI/wevapersNew/base"></require>
+  <require xid="require2" url="$UI/wevapersNew/jquery-1.10.2.min"></require></resource>
 </div>
